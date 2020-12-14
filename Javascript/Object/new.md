@@ -7,14 +7,14 @@
     - 简单类型被忽略
 
 ## step1: 创建空对象
-
 ```javascript
 const myNew = (Constrcutor, ...args) => {
     // step1: 创建空对象
     const empty = {};
 }
 ```
-## step2 实例属性和方法保留
+
+## step2: 实例属性和方法保留
 ```javascript
 const myNew = (Constrcutor, ...args) => {
     // step1: 创建空对象
@@ -25,7 +25,7 @@ const myNew = (Constrcutor, ...args) => {
 }
 ```
 
-## step3 原型链的保持
+## step3: 原型链的保持
 ```javascript
 const myNew = (Constrcutor, ...args) => {
     // step1: 创建空对象
@@ -42,13 +42,13 @@ const myNew = (Constrcutor, ...args) => {
 ## step4: 返回类型的修正
 ```javascript
 const myNew = (Constrcutor, ...args) => {
-    // step1 创建空对象
+    // step1: 创建空对象
     const empty = {};
 
-    // step2 实例属性和方法保留 这里需要接收返回值
+    // step2: 实例属性和方法保留 这里需要接收返回值
     const result = Constrcutor.call(empty, ...args);
 
-    // step3 原型链的保持
+    // step3: 原型链的保持
     empty.__proto__ = Constrcutor.prototype;
 
     // step4: 返回类型的修正
