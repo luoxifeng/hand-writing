@@ -62,12 +62,25 @@ A[Symbol.hasInstance]; // ƒ [Symbol.hasInstance]() { [native code] }
 ![Function.prototype](./prototype.png)
 并且是不可以覆写的
 ![Symbol.hasInstance Descriptor](./descriptor.png)
-验证测试
-![Symbol.hasInstance test](./test.png)
+
 
 ## 最终版本
 注:这里依然没有实现标准所有的步骤，比如判断函数，以及获取`bind`后函数的原始函数等，但是这不影响最主要的功能
-```
+```javascript
+const myInstanceof = (a, A) => {
+  // 增加了这些
+  const instOfHandler = A[Symbol.hasInstance];
+  if (instOfHandler) return instOfHandler.call(A, a);
 
+  const P = A.prototype;
+  const t = a.__proto__;
+  while (true) {
+    if (t === null) return false;
+    if (t === P) return true;
+    t = t.__proto__;
+  }
+};
 ```
+## 验证测试
+![Symbol.hasInstance test](./test.png)
 
