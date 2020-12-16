@@ -1,4 +1,4 @@
-# new 关键字实现 ([Home](/readme.md)/[Object](./readme.md))
+# new 关键字实现 ([Homed✈️](/readme.md)/[Objectd✈️](./readme.md))
 - 创建空对象
 - 实例属性和方法赋值
 - 原型链的保持
