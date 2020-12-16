@@ -1,0 +1,4 @@
+# JavaScript
+
+## Function
+- debounce & throttle
