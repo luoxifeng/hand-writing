@@ -1,4 +1,4 @@
 # Object
-- new
-- instanceof
+- [new](./new.md)
+- [instanceof](./instanceof/instanceof.md)
 - [create](./create.md)
