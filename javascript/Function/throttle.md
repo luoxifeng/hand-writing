@@ -1,17 +1,5 @@
-/**
- * 防抖
- */
-const debounce = (fun, delay, ctx) => {
-    let timer = null;
-    return function(...args) {
-        clearTimeout(timer);
-        timer = setTimeout(() => fun.apply(this, args), delay);
-    }
-}
-
-/**
- * 节流
- */
+# 节流
+```js
 const throttle = (fun, delay) => {
     let doing = false;
     return function(...args) {
@@ -23,3 +11,4 @@ const throttle = (fun, delay) => {
         })
     }
 }
+```
