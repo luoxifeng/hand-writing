@@ -2,17 +2,18 @@
 
 ## 📜 javascript
 
-<details>
+<details for="Object">
 <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
 
-- [new](./javascript/Object/new.md)
-- [instanceof](./javascript/Object/instanceof/instanceof.md)
+- [new](./javascript/Object/new/readme.md)
+- [instanceof](./javascript/Object/instanceof/readme.md)
 
 </details>
-<details>
-  <summary>💣 Function</summary>
+<details for="Function">
+  <summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
+
 </details>
-<details>
+<details for="Array">
   <summary>🛒 Array</summary>
 </details>
 
