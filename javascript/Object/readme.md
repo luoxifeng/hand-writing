@@ -1,4 +1,4 @@
 # Object
-- [new](./new.md)
-- [instanceof](./instanceof/instanceof.md)
+- [new](./new/readme.md)
+- [instanceof](./instanceof/read.md)
 - [create](./create.md)
