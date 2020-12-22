@@ -18,46 +18,80 @@ const createMap= () => {
   return res;
 };
 
+const createNode = (title = 'dddd', level = 0, path = '.', filter = t => t) => {
+  const isFile = /\.md$/.test(title);
+  return filter({
+    title: isFile ? title.replace(/\.md$/, '') : title,
+    level,
+    path,
+    isFile,
+    hasReadme: false,
+    readmePath: '',
+    children: [],
+  })
+}
+
 function generateMarkdown(title) {
   glob('./!(node_modules)**/**/*.md', (err, files) => {
-    const map = createMap();
-    map.set('path', '.');
-    map.set('title', title);
-    map.set('mdTitle', `# ${title}`);
-    map.set('root', true);
-
+    const root = createNode(title, 0, '.');
+    const map = new Map();
   
-    const common = (map, [level0, level1, level2, ...list], isRoot) => {
-      const level0Map = map.get(level0) || createMap();
-      if (level0Map) {
-        level0Map.set('path', `${map.get('path')}/${level0}`)
-        level0Map.set('title', )
-        isRoot && level0Map.set('mdTitle', `## ${level0}`);
-        // isRoot
-        map.set(level0, level0Map);
+    const common = (parent, [level0, level1, ...list]) => {
+      const currentPath = `${parent.path}/${level0}`;
+      const currentLevel= parent.level + 1;
+      let currentNode = map.get(currentPath);
+      if (!currentNode) {
+        currentNode = createNode(level0, currentLevel, currentPath);
+        map.set(currentPath, currentNode);
+        parent.children.push(currentNode);
       }
+
       if (level1 === 'readme.md') {
-        level0Map.set('hasReadme', true);
-        level0Map.set('readmeLink', true);
+        currentNode['hasReadme'] = true;
+        currentNode['readmePath'] = `${currentPath}/readme.md`;
+        // currentNode.set('readmeLink', true);
 
 
       } else if (/.*?\.md/.test(level1)) {
-        level0Map.set(level1, level1);
+        currentNode.children.push(createNode(level1, currentLevel + 1, `${currentPath}/${level1}`));
       }
   
-      if (!list.length) return
-  
-      common(level0Map, [level1, level2, ...list], false);
+      if (list.length) {
+        common(currentNode, [level1, ...list])
+      }
     }
     const paths = files.map(path => path.split('\/').splice(1));
+
+    paths.forEach(pathArr => common(root, pathArr));
+
+    const wrapper = (_root) => {
+      let curr = _root;
+      function codeGenerator(node) {
+        let pre = curr;
+        curr = node;
+        let res = ``;
   
-    paths.forEach(pathArr => {
+        if (node.level === 0) {
   
-      common(map, pathArr, true)
+        }
+         
+        node.map(child => {
+          return codeGenerator(child);
+        })
   
-  
-    })
-    console.log(JSON.stringify(map, null, 2), paths);
+        node = pre
+        return res;
+      }
+
+      codeGenerator(_root);
+
+    }
+   
+
+    // console.log()
+
+
+    console.log(JSON.stringify(root, null, 2), paths, wrapper(root));
   
   })
 }

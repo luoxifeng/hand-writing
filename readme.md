@@ -6,6 +6,7 @@
 <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
 
 - [new](./javascript/Object/new/readme.md)
+
 - [instanceof](./javascript/Object/instanceof/readme.md)
 
 </details>
