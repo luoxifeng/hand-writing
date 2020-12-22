@@ -1,22 +1,4 @@
 const glob = require('glob')
-const debug = true;
-const createMap= () => {
-  if (!debug) new Map();
-  const res = {};
-  Object.defineProperties(res, {
-    set: {
-      value: function (k, v) {
-        this[k] = v;
-      },
-    },
-    get: {
-      value: function (k) {
-        return this[k];
-      }
-    }
-  })
-  return res;
-};
 
 const createNode = (title = '', level = 0, path = '.', filter = t => t) => {
   const isFile = /\.md$/.test(title);
@@ -27,7 +9,7 @@ const createNode = (title = '', level = 0, path = '.', filter = t => t) => {
     path,
     isFile,
     readme: '',
-    link: `[${displayTitle}](${path})`,
+    link: isFile ? `[${displayTitle}](${path})` : '',
     children: [],
   })
 }
@@ -73,7 +55,7 @@ function generateMarkdown(title) {
         if (node.level - target.level === 0) {
           res += `# ${node.title}\n`
         } else if (node.level - target.level === 1) {
-          res += `## ${node.title}\n`
+          res += `## ${node.link || node.title}\n`
         } else if (node.level - target.level >= 2) {
           // <details for="Object">
           //   <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
@@ -82,11 +64,11 @@ function generateMarkdown(title) {
           //   - [instanceof](./javascript/Object/instanceof/readme.md)
           // </details>
           if (!node.children.length) {
-            res += `- [${node.title}](${node.path || node.readmePath})`
+            res += `- ${node.link}`
           } else {
             res += `<details for="${node.title}">\n`;
             res += `<summary>`;
-            res += node.hasReadme ? `<a href="${node.path}">${node.title}</a>` : node.title;
+            res += node.readme ? `<a href="${node.readme}">${node.title}</a>` : node.title;
             res += `</summary>\n`;
             end = '</details>\n'
           }
@@ -98,9 +80,9 @@ function generateMarkdown(title) {
           // !child.isFile && child.children.length && wrapper(child);
 
           return codeGenerator(child);
-        }).join('\n') + end;
+        }).join('') + end;
   
-        // return res;
+        return res;
       }
 
       return codeGenerator(_root);
