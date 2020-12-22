@@ -70,7 +70,7 @@ function generateMarkdown(title) {
             res += `<summary>`;
             res += node.readme ? `<a href="${node.readme}">${node.title}</a>` : node.title;
             res += `</summary>\n`;
-            end = '</details>\n'
+            end = '\n</details>\n'
           }
         } else {
           res += `- [${node.title}](${node.readmePath})\n`
