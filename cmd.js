@@ -67,16 +67,18 @@ function generateMarkdown(title) {
           if (!node.children.length) {
             res += `${indent}- ${node.link}`
           } else {
-            res += `${indent}  <details for="${node.title}">\n`;
-            res += `${indent}  <summary>`;
+            const padding = indent ? `${indent}  ` : indent;
+            res += `${padding}<details for="${node.title}">\n`;
+            res += `${padding}<summary>`;
             res += node.readme ? `<a href="${node.readme}">${node.title}</a>` : node.title;
             res += `</summary>\n`;
-            end = `\n${indent}  </details>\n`
+            end = `\n${padding}</details>\n`
             indent += '  ';
           }
-        } else {
-          res += `${indent}- [${node.title}](${node.readmePath})\n`
-        }
+        } 
+        // else {
+        //   res += `${indent}- [${node.title}](${node.readmePath})\n`
+        // }
          
         res += node.children.map(child => {
           // !child.isFile && child.children.length && wrapper(child);
