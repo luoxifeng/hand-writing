@@ -48,8 +48,9 @@ function generateMarkdown(title) {
 
     const wrapper = (_root) => {
       let target = _root;
-      function codeGenerator(node) {
+      function codeGenerator(node, indent = '') {
         let res = `\n`;
+        
         let end = '';
   
         if (node.level - target.level === 0) {
@@ -64,22 +65,23 @@ function generateMarkdown(title) {
           //   - [instanceof](./javascript/Object/instanceof/readme.md)
           // </details>
           if (!node.children.length) {
-            res += `- ${node.link}`
+            res += `${indent}- ${node.link}`
           } else {
-            res += `<details for="${node.title}">\n`;
-            res += `<summary>`;
+            res += `${indent}  <details for="${node.title}">\n`;
+            res += `${indent}  <summary>`;
             res += node.readme ? `<a href="${node.readme}">${node.title}</a>` : node.title;
             res += `</summary>\n`;
-            end = '\n</details>\n'
+            end = `\n${indent}  </details>\n`
+            indent += '  ';
           }
         } else {
-          res += `- [${node.title}](${node.readmePath})\n`
+          res += `${indent}- [${node.title}](${node.readmePath})\n`
         }
          
         res += node.children.map(child => {
           // !child.isFile && child.children.length && wrapper(child);
 
-          return codeGenerator(child);
+          return codeGenerator(child, indent);
         }).join('') + end;
   
         return res;
