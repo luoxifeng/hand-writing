@@ -10,7 +10,7 @@
 ## [javascript](./javascript/readme.md)
 
 - [Array](./javascript/Array/readme.md)
-- <details for="Function">
+-  <details for="Function">
 <summary><a href="./javascript/Function/readme.md">Function</a></summary>
 
 - [apply](./javascript/Function/apply.md)
