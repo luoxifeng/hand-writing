@@ -10,7 +10,7 @@
 ## [javascript](./javascript/readme.md)
 
 - [Array](./javascript/Array/readme.md)
--  <details for="Function">
+<details for="Function">
 <summary><a href="./javascript/Function/readme.md">Function</a></summary>
 
 - [apply](./javascript/Function/apply.md)
@@ -24,7 +24,7 @@
 
 - [create](./javascript/Object/create/readme.md)
 - [instanceof](./javascript/Object/instanceof/readme.md)
-- <details for="new">
+  <details for="new">
   <summary><a href="./javascript/Object/new/readme.md">new</a></summary>
 
   - [ll](./javascript/Object/new/ll.md)
