@@ -18,15 +18,16 @@ const createMap= () => {
   return res;
 };
 
-const createNode = (title = 'dddd', level = 0, path = '.', filter = t => t) => {
+const createNode = (title = '', level = 0, path = '.', filter = t => t) => {
   const isFile = /\.md$/.test(title);
+  const displayTitle = title.replace(/\.md$/, '')
   return filter({
-    title: isFile ? title.replace(/\.md$/, '') : title,
+    title: isFile ? displayTitle : title,
     level,
     path,
     isFile,
-    hasReadme: false,
-    readmePath: '',
+    readme: '',
+    link: `[${displayTitle}](${path})`,
     children: [],
   })
 }
@@ -46,12 +47,11 @@ function generateMarkdown(title) {
         parent.children.push(currentNode);
       }
 
+      currentNode['path'] = `${currentPath}`;
+
       if (level1 === 'readme.md') {
-        currentNode['hasReadme'] = true;
-        currentNode['readmePath'] = `${currentPath}/readme.md`;
-        // currentNode.set('readmeLink', true);
-
-
+        currentNode['readme'] = `${currentPath}/readme.md`;
+        currentNode['link'] = `[${currentNode.title}](${currentPath}/readme.md)`
       } else if (/.*?\.md/.test(level1)) {
         currentNode.children.push(createNode(level1, currentLevel + 1, `${currentPath}/${level1}`));
       }
@@ -65,25 +65,45 @@ function generateMarkdown(title) {
     paths.forEach(pathArr => common(root, pathArr));
 
     const wrapper = (_root) => {
-      let curr = _root;
+      let target = _root;
       function codeGenerator(node) {
-        let pre = curr;
-        curr = node;
-        let res = ``;
+        let res = `\n`;
+        let end = '';
   
-        if (node.level === 0) {
-  
+        if (node.level - target.level === 0) {
+          res += `# ${node.title}\n`
+        } else if (node.level - target.level === 1) {
+          res += `## ${node.title}\n`
+        } else if (node.level - target.level >= 2) {
+          // <details for="Object">
+          //   <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
+
+          //   - [new](./javascript/Object/new/readme.md)
+          //   - [instanceof](./javascript/Object/instanceof/readme.md)
+          // </details>
+          if (!node.children.length) {
+            res += `- [${node.title}](${node.path || node.readmePath})`
+          } else {
+            res += `<details for="${node.title}">\n`;
+            res += `<summary>`;
+            res += node.hasReadme ? `<a href="${node.path}">${node.title}</a>` : node.title;
+            res += `</summary>\n`;
+            end = '</details>\n'
+          }
+        } else {
+          res += `- [${node.title}](${node.readmePath})\n`
         }
          
-        node.map(child => {
+        res += node.children.map(child => {
+          // !child.isFile && child.children.length && wrapper(child);
+
           return codeGenerator(child);
-        })
+        }).join('\n') + end;
   
-        node = pre
-        return res;
+        // return res;
       }
 
-      codeGenerator(_root);
+      return codeGenerator(_root);
 
     }
    
