@@ -24,8 +24,9 @@
 
 - [create](./javascript/Object/create/readme.md)
 - [instanceof](./javascript/Object/instanceof/readme.md)
-<details for="new">
-<summary><a href="./javascript/Object/new/readme.md">new</a></summary>
+  <details for="new">
+  <summary><a href="./javascript/Object/new/readme.md">new</a></summary>
 
-- [ll](./javascript/Object/new/ll.md)</details>
+  - [ll](./javascript/Object/new/ll.md)
+  </details>
 </details>
