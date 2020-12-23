@@ -76,9 +76,6 @@ function generateMarkdown(title) {
             indent += '  ';
           }
         } 
-        // else {
-        //   res += `${indent}- [${node.title}](${node.readmePath})\n`
-        // }
          
         res += node.children.map(child => {
           // !child.isFile && child.children.length && wrapper(child);
@@ -93,12 +90,7 @@ function generateMarkdown(title) {
 
     }
    
-
-    // console.log()
-
-
     console.log(JSON.stringify(root, null, 2), paths, wrapper(root));
-  
   })
 }
 
