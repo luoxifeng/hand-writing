@@ -6,13 +6,14 @@
 <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
 
 - [new](./javascript/Object/new/readme.md)
-
 - [instanceof](./javascript/Object/instanceof/readme.md)
 - [继承]()
 - [create]()
 </details>
 <details for="Function">
-  <summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
+<summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
+
+- [apply](./javascript/Function/apply.md)
 
 </details>
 <details for="Array">
