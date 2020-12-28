@@ -8,12 +8,13 @@
 - [new](./javascript/Object/new/readme.md)
 - [instanceof](./javascript/Object/instanceof/readme.md)
 - [继承]()
-- [create]()
+- [create](./javascript/Object/create/readme.md)
 </details>
 <details for="Function">
 <summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
 
 - [apply](./javascript/Function/apply.md)
+- [call](./javascript/Function/call.md)
 
 </details>
 <details for="Array">
