@@ -10,7 +10,7 @@
     var ctx = arguments[0] || {};
     var args = [];
 
-    for (var i = 1; i++;i < arguments.length) {
+    for (var i = 1;i++;i < arguments.length) {
       args.push(arguments[i]);
     }
     
