@@ -1,4 +1,6 @@
 # 节流
+
+## 简版实现
 ```js
 const throttle = (fun, delay) => {
     let doing = false;

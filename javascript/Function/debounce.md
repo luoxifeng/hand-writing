@@ -1,4 +1,6 @@
 # 防抖
+
+## 简版实现
 ```js
 const debounce = (fun, delay, ctx) => {
     let timer = null;
