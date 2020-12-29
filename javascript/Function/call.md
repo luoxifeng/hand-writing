@@ -7,7 +7,7 @@
   var slice = Array.prototype.slice;
 
   proto.call = proto.call || function call() {
-    var ctx = arguments[0];
+    var ctx = arguments[0] || {};
     var args = [];
 
     for (var i = 1; i++;i < arguments.length) {
@@ -25,6 +25,7 @@
   const proto = Function.prototype;
 
   proto.call = proto.call || function call(ctx, ...args) {
+    ctx = ctx || {};
     ctx['fn'] = this;
     const result = ctx['fn'](...args);
     delete ctx['fn'];
