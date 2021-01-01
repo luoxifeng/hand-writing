@@ -14,6 +14,7 @@
 <summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
 
 - [apply](./javascript/Function/apply.md)
+- [bind](./javascript/Function/bind.md)
 - [call](./javascript/Function/call.md)
 
 </details>
