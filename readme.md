@@ -21,6 +21,9 @@
 <details for="Array">
   <summary>🛒 Array</summary>
 </details>
+<details for="JSON">
+  <summary>🛒 JSON</summary>
+</details>
 
 ## 🖍 Css
 
