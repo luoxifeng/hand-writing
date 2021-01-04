@@ -6,10 +6,11 @@
 const myCreate = (proto, descriptors) => {
   function F() {}
   F.prototype = proto;
+  const empty = new F();
   if (typeof descriptors !== 'undefined') {
     Object.defineProperties(empty, descriptors);
   }
-  return new F();
+  return empty;
 };
 ```
 ## MDN polyfill
