@@ -3,11 +3,12 @@
 ## 实现
 
 ```js
-if (typeof Array.from === "undefined") {
+if (!Array.from) {
   Array.from = function from(arrayLike, mapping, ctx) {
-    Array.apply(null, arrayLike).map(function (t, i) {
+    const arr = Array.prototype.slice.call(arrayLike);
+    return mapping ? arr.map(function (t, i) {
       return mapping.call(this, t, i);
-    }, ctx);
+    }, ctx) : arr
   };
 }
 ```
