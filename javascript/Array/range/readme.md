@@ -4,19 +4,13 @@
 
 ```js
 function range(from, to) {
-  var result = [],
-    temp = from;
-
-  if (typeof from !== "number" || typeof to !== "number") {
-    throw new TypeError("Both arguments to range must be numbers");
-  }
-
-  if (from === -Infinity || to === Infinity || from >= to) return result;
-
-  while (temp < to) {
-    result.push(temp);
-    temp++;
+  var result = [];
+  while (from < to) {
+    result.push(from);
+    from++;
   }
   return result;
 }
+
+range(10, 100)
 ```
