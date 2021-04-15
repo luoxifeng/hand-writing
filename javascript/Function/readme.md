@@ -1,6 +1,37 @@
 # Function
 
+## A
+
+<details>
+<summary>apply</summary>
+
+```js
+
+```
+
+</details>
+
+## B
+
+<details>
+<summary>bind</summary>
+
+```js
+
+```
+
+</details>
+
 ## C
+
+<details>
+<summary>call</summary>
+
+```js
+
+```
+
+</details>
 
 <details>
 <summary>curry</summary>
