@@ -6,6 +6,25 @@
 <summary>apply</summary>
 
 ```js
+// #1 
+Function.prototype.myApply = function(ctx, args = []) {
+  ctx.__HANDLER__ = this
+
+  const result = ctx.__HANDLER__(...args)
+  delete ctx.__HANDLER__
+  return result
+}
+
+// #2 
+Function.prototype.myApply = function() {
+  const ctx = arguments[0]
+  const args = arguments[1]
+  ctx.__HANDLER__ = this
+
+  const result = new Function('return arguments[0].__HANDLER__(' + args +')')(ctx)
+  delete ctx.__HANDLER__
+  return result
+}
 
 ```
 
@@ -28,6 +47,26 @@
 <summary>call</summary>
 
 ```js
+// #1
+Function.prototype.myCall = function(ctx, ...args) {
+  ctx.__HANDLER__ = this
+
+  const result = ctx.__HANDLER__(...args)
+  delete ctx.__HANDLER__
+  return result
+}
+
+// #2
+Function.prototype.myCall = function() {
+  const ctx = arguments[0]
+  const args = Array.prototype.slice.call(arguments, 1)
+  ctx.__HANDLER__ = this
+  
+
+  const result = new Function('return arguments[0].__HANDLER__(' + args + ')')(ctx)
+  delete ctx.__HANDLER__
+  return result;
+}
 
 ```
 
