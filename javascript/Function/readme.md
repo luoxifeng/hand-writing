@@ -121,38 +121,6 @@ compose(
 </details>
 
 
-## M
-
-<details>
-<summary>moveZeroesToEnd</summary>
-
-```js
-// #1 改变自身
-function moveZeroesToEnd(list) {
-  let index = list.length - 1
-  while (index >= 0) {
-    if (list[index] === 0) {
-      list.push(...list.splice(index, 1))
-    }
-    index--
-  }
-  return list
-}
-
-// #2 不改变自身
-function moveZeroesToEnd(list) {
-  const res = [];
-  let index = list.length - 1
-  while (index >= 0) {
-    list[index] ? res.unshift(list[index]) : res.push(list[index])
-    index--
-  }
-  return res
-}
-```
-
-</details>
-
 
 ## P
 

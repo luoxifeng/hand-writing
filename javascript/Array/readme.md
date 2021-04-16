@@ -1,6 +1,77 @@
 # Array
 
+## F
+
+<details>
+<summary>from</summary>
+
+```js
+if (!Array.from) {
+  Array.from = function from(arrayLike, mapping, ctx) {
+    const arr = Array.prototype.slice.call(arrayLike);
+    return mapping
+      ? arr.map(function (t, i) {
+          return mapping.call(this, t, i);
+        }, ctx)
+      : arr;
+  };
+}
+```
+
+</details>
+
+## M
+
+<details>
+<summary>moveZeroesToEnd</summary>
+
+```js
+// #1 改变自身
+function moveZeroesToEnd(list) {
+  let index = list.length - 1;
+  while (index >= 0) {
+    if (list[index] === 0) {
+      list.push(...list.splice(index, 1));
+    }
+    index--;
+  }
+  return list;
+}
+
+// #2 不改变自身
+function moveZeroesToEnd(list) {
+  const res = [];
+  let index = list.length - 1;
+  while (index >= 0) {
+    list[index] ? res.unshift(list[index]) : res.push(list[index]);
+    index--;
+  }
+  return res;
+}
+```
+
+</details>
+
 ## R
+
+<details>
+<summary>range</summary>
+
+```js
+function range(from, to) {
+  var result = [];
+  while (from < to) {
+    result.push(from);
+    from++;
+  }
+  return result;
+}
+
+range(10, 100);
+```
+
+</details>
+
 <details>
 <summary>reduce</summary>
 
@@ -35,4 +106,5 @@ if (!Array.prototype.reduce) {
   };
 }
 ```
+
 <details>
