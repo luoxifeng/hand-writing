@@ -2,6 +2,34 @@
 
 ## F
 
+
+<details>
+<summary>flat</summary>
+
+```js
+function flat(list, n = 1) {
+  if (n <= 0) return list
+  return list.reduce((acc, curr) => acc.concat(Array.isArray(curr) ? flat(curr, n--) : curr), [])
+}
+
+flat([[1], [2, [3]], [5]])
+```
+
+</details>
+
+<details>
+<summary>flatMap</summary>
+
+```js
+function flatMap(list, callback = t => t) {
+  return list.reduce((acc, curr, i) => acc.concat(callback(curr, i, list)), [])
+}
+
+flatMap([1, 2, 3, 4], x => [[x * 2]])
+```
+
+</details>
+
 <details>
 <summary>from</summary>
 
