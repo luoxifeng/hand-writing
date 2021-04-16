@@ -6,26 +6,27 @@
 <summary>apply</summary>
 
 ```js
-// #1 
-Function.prototype.myApply = function(ctx, args = []) {
-  ctx.__HANDLER__ = this
+// #1
+Function.prototype.myApply = function (ctx, args = []) {
+  ctx.__HANDLER__ = this;
 
-  const result = ctx.__HANDLER__(...args)
-  delete ctx.__HANDLER__
-  return result
-}
+  const result = ctx.__HANDLER__(...args);
+  delete ctx.__HANDLER__;
+  return result;
+};
 
-// #2 
-Function.prototype.myApply = function() {
-  const ctx = arguments[0]
-  const args = arguments[1]
-  ctx.__HANDLER__ = this
+// #2
+Function.prototype.myApply = function () {
+  const ctx = arguments[0];
+  const args = arguments[1];
+  ctx.__HANDLER__ = this;
 
-  const result = new Function('return arguments[0].__HANDLER__(' + args +')')(ctx)
-  delete ctx.__HANDLER__
-  return result
-}
-
+  const result = new Function("return arguments[0].__HANDLER__(" + args + ")")(
+    ctx
+  );
+  delete ctx.__HANDLER__;
+  return result;
+};
 ```
 
 </details>
@@ -36,21 +37,23 @@ Function.prototype.myApply = function() {
 <summary>bind</summary>
 
 ```js
-Function.prototype.myBind = function(ctx, ...args) {
+Function.prototype.myBind = function (ctx, ...args) {
   const self = this;
   function fNOP() {}
   function fBound(...args1) {
-    return self.apply(this instanceof fNOP ? this : ctx, [...args, ...args1])
+    return self.apply(this instanceof fNOP ? this : ctx, [...args, ...args1]);
   }
 
-  if (self.prototype) fNOP.prototype = self.prototype
-  fBound.prototype = new fNOP()
- 
-  return fBound
-}
+  if (self.prototype) fNOP.prototype = self.prototype;
+  fBound.prototype = new fNOP();
 
-function test(...args) { console.log(this.a, ...args) }
-test.myBind({ a: 123 }, 1, 2)(3, 4)
+  return fBound;
+};
+
+function test(...args) {
+  console.log(this.a, ...args);
+}
+test.myBind({ a: 123 }, 1, 2)(3, 4);
 ```
 
 </details>
@@ -62,26 +65,26 @@ test.myBind({ a: 123 }, 1, 2)(3, 4)
 
 ```js
 // #1
-Function.prototype.myCall = function(ctx, ...args) {
-  ctx.__HANDLER__ = this
+Function.prototype.myCall = function (ctx, ...args) {
+  ctx.__HANDLER__ = this;
 
-  const result = ctx.__HANDLER__(...args)
-  delete ctx.__HANDLER__
-  return result
-}
+  const result = ctx.__HANDLER__(...args);
+  delete ctx.__HANDLER__;
+  return result;
+};
 
 // #2
-Function.prototype.myCall = function() {
-  const ctx = arguments[0]
-  const args = Array.prototype.slice.call(arguments, 1)
-  ctx.__HANDLER__ = this
-  
+Function.prototype.myCall = function () {
+  const ctx = arguments[0];
+  const args = Array.prototype.slice.call(arguments, 1);
+  ctx.__HANDLER__ = this;
 
-  const result = new Function('return arguments[0].__HANDLER__(' + args + ')')(ctx)
-  delete ctx.__HANDLER__
+  const result = new Function("return arguments[0].__HANDLER__(" + args + ")")(
+    ctx
+  );
+  delete ctx.__HANDLER__;
   return result;
-}
-
+};
 ```
 
 </details>
@@ -117,8 +120,41 @@ compose(
 
 </details>
 
-## P
 
+## M
+
+<details>
+<summary>moveZeroesToEnd</summary>
+
+```js
+// #1 改变自身
+function moveZeroesToEnd(list) {
+  let index = list.length - 1
+  while (index >= 0) {
+    if (list[index] === 0) {
+      list.push(...list.splice(index, 1))
+    }
+    index--
+  }
+  return list
+}
+
+// #2 不改变自身
+function moveZeroesToEnd(list) {
+  const res = [];
+  let index = list.length - 1
+  while (index >= 0) {
+    list[index] ? res.unshift(list[index]) : res.push(list[index])
+    index--
+  }
+  return res
+}
+```
+
+</details>
+
+
+## P
 
 <details>
 <summary>pipe</summary>
@@ -136,23 +172,17 @@ pipe(
 
 ## R
 
-
 <details>
 <summary>repeat</summary>
 
 ```js
-const repeat = (str, length) => Array.from({ length }, () => str).join('');
-const repeat = (str, length, index = 0, res = '') => {
-  while(index++ < length) res += str
-  return res
+const repeat = (str, length) => Array.from({ length }, () => str).join("");
+const repeat = (str, length, index = 0, res = "") => {
+  while (index++ < length) res += str;
+  return res;
 };
 
-repeat('d', 3)
+repeat("d", 3);
 ```
 
 </details>
-
-
-
-
-
