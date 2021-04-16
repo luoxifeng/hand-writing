@@ -134,3 +134,25 @@ pipe(
 
 </details>
 
+## R
+
+
+<details>
+<summary>repeat</summary>
+
+```js
+const repeat = (str, length) => Array.from({ length }, () => str).join('');
+const repeat = (str, length, index = 0, res = '') => {
+  while(index++ < length) res += str
+  return res
+};
+
+repeat('d', 3)
+```
+
+</details>
+
+
+
+
+
