@@ -36,7 +36,21 @@ Function.prototype.myApply = function() {
 <summary>bind</summary>
 
 ```js
+Function.prototype.myBind = function(ctx, ...args) {
+  const self = this;
+  function fNOP() {}
+  function fBound(...args1) {
+    return self.apply(this instanceof fNOP ? this : ctx, [...args, ...args1])
+  }
 
+  if (self.prototype) fNOP.prototype = self.prototype
+  fBound.prototype = new fNOP()
+ 
+  return fBound
+}
+
+function test(...args) { console.log(this.a, ...args) }
+test.myBind({ a: 123 }, 1, 2)(3, 4)
 ```
 
 </details>
