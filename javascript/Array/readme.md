@@ -2,6 +2,27 @@
 
 ## F
 
+<details>
+<summary>fill</summary>
+
+```js
+function fill(list, t) {
+  const length = list.length
+  let index = 0
+  const result = []
+  while (index < length) {
+    result.push(t)
+    index++
+  }
+  return result
+}
+
+cosnt fill => (list, t) => Array.from(list, () => t)
+
+fill([1,2,2,2], 1)
+```
+
+</details>
 
 <details>
 <summary>flat</summary>
