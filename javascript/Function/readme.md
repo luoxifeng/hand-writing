@@ -120,6 +120,22 @@ compose(
 
 </details>
 
+<details>
+<summary>composeMiddleware</summary>
+
+```js
+const composeMiddleware = (middlewares) => {
+  const next = i => {
+    const middleware= middlewares[i]
+    return middleware && middleware(next.bind(null, i++))
+
+  }
+  next(0)
+};
+```
+
+</details>
+
 
 
 ## P
