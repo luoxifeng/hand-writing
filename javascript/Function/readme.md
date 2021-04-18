@@ -127,11 +127,28 @@ compose(
 const composeMiddleware = (middlewares) => {
   const next = i => {
     const middleware= middlewares[i]
-    return middleware && middleware(next.bind(null, i++))
-
+    return middleware && middleware(next.bind(null, i + 1))
   }
   next(0)
 };
+
+composeMiddleware([
+   async next => {
+    console.log('1 start');
+    await next()
+    console.log('1 end');
+  },
+  async next => {
+    console.log('2 start');
+    await next();
+    console.log('2 end');
+  },
+  async next => {
+    console.log('3 start');
+    next();
+    console.log('3 end');
+  },
+])
 ```
 
 </details>
