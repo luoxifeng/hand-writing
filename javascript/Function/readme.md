@@ -125,35 +125,52 @@ compose(
 
 ```js
 const composeMiddleware = (middlewares) => {
-  const next = i => {
-    const middleware= middlewares[i]
-    return middleware && middleware(next.bind(null, i + 1))
-  }
-  next(0)
+  const next = (i) => {
+    const middleware = middlewares[i];
+    return middleware && middleware(next.bind(null, i + 1));
+  };
+  next(0);
 };
 
 composeMiddleware([
-   async next => {
-    console.log('1 start');
-    await next()
-    console.log('1 end');
-  },
-  async next => {
-    console.log('2 start');
+  async (next) => {
+    console.log("1 start");
     await next();
-    console.log('2 end');
+    console.log("1 end");
   },
-  async next => {
-    console.log('3 start');
+  async (next) => {
+    console.log("2 start");
+    await next();
+    console.log("2 end");
+  },
+  async (next) => {
+    console.log("3 start");
     next();
-    console.log('3 end');
+    console.log("3 end");
   },
-])
+]);
 ```
 
 </details>
 
+## D
 
+<details>
+<summary>debounce</summary>
+
+```js
+const debounce = (fun, delay) => {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(fun, delay);
+  };
+};
+
+debounce(() => console.log("test"), 3000);
+```
+
+</details>
 
 ## P
 
