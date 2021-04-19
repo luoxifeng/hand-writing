@@ -72,6 +72,25 @@ if (!Array.from) {
 ## M
 
 <details>
+<summary>max</summary>
+
+```js
+function max(list) {
+  let max = -Infinity
+  const length = list.length
+  let index = 0
+  while (index < length - 1) {
+    if (list[index] > max) max = list[index]
+    index++
+  }
+  return max
+}
+
+max([1, 5, 10, 2])
+```
+</details>
+
+<details>
 <summary>moveZeroesToEnd</summary>
 
 ```js
