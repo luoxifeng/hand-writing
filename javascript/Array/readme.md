@@ -91,6 +91,31 @@ max([1, 5, 10, 2])
 </details>
 
 <details>
+<summary>maxSecond</summary>
+
+```js
+function maxSecond(list) {
+  let max = list[0]
+  let sec = max - 1
+  const length = list.length
+  let index = 1
+  while (index < length) {
+    if (list[index] > sec) {
+      sec = list[index]
+    }
+    if (sec > max) {
+      [max, sec] = [sec, max]
+    }
+    index++
+  }
+  return sec
+}
+
+maxSecond([1, 5, 10, 2])
+```
+</details>
+
+<details>
 <summary>moveZeroesToEnd</summary>
 
 ```js
