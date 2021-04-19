@@ -96,7 +96,7 @@ max([1, 5, 10, 2])
 ```js
 function maxSecond(list) {
   let max = list[0]
-  let sec = max - 1
+  let sec = max
   const length = list.length
   let index = 1
   while (index < length) {
@@ -111,7 +111,37 @@ function maxSecond(list) {
   return sec
 }
 
-maxSecond([1, 5, 10, 2])
+maxSecond([1, 5, 10, 2, 15])
+```
+</details>
+
+
+<details>
+<summary>maxSecond</summary>
+
+```js
+function maxThird(list) {
+  let max = list[0]
+  let sec = max
+  let third = sec
+  const length = list.length
+  let index = 1
+  while (index < length) {
+    if (list[index] > third) {
+      third = list[index]
+    }
+    if (third > sec) {
+      [sec, third] = [third, sec]
+    }
+    if (sec > max) {
+      [max, sec] = [sec, max]
+    }
+    index++
+  }
+  return third
+}
+
+maxThird([1, 5, 10, 2, 15])
 ```
 </details>
 
