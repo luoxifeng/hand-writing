@@ -41,3 +41,37 @@ let ajax = (...args) => {
   return ajax(...args);
 };
 ```
+
+## Promise
+
+<details>
+<summary>all</summary>
+
+```js
+Promise.myAll = (promises = []) => {
+  return new Promise((resolve, reject) => {
+    const length = promises.length;
+    const result = new Array(length);
+    let count = 0
+    for (let i = 0; i <= length - 1; i++) {
+      Promise.resolve(promises[i]).then((res) => {
+        count++;
+        result[i] = res;
+        if (count === length) resolve(result);
+      }, reject);
+    }
+  });
+};
+
+Promise.myAll([
+  Promise.resolve(1),
+  2,
+  new Promise((res) => setTimeout(() => res(3), 2000)),
+  Promise.resolve(4),
+]).then(console.log, console.error);
+```
+
+Promise.resolve(new Promise(res => res(1))).then(console.log)
+Promise.resolve(2).then(console.log)
+
+</details>
