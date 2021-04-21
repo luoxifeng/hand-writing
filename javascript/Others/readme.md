@@ -42,6 +42,8 @@ let ajax = (...args) => {
 };
 ```
 
+
+
 ## Promise
 
 <details>
