@@ -1,6 +1,8 @@
 # Others
 
-## ajax
+## Ajax
+<details>
+<summary>ajax</summary>
 
 ```js
 let ajax = (...args) => {
@@ -42,6 +44,44 @@ let ajax = (...args) => {
 };
 ```
 
+</details>
+
+## LRU
+
+<details>
+<summary>LRU</summary>
+
+```js
+class LRU {
+  constructor(max) {
+    this.max = max
+    this.cache = []
+  }
+
+  append(target) {
+    const index = this.cache.indexOf(target)
+    if (index > -1) {
+      this.cache.splice(index, 1)
+    } else if (this.cache.length >= this.max) {
+      this.cache.pop()
+    }
+    this.cache.unshift(target)
+  }
+}
+const lru = new LRU(3)
+lru.append(1)
+console.log(lru.cache)
+lru.append(2)
+console.log(lru.cache)
+lru.append(3)
+console.log(lru.cache)
+lru.append(2)
+console.log(lru.cache)
+lru.append(4)
+console.log(lru.cache)
+```
+
+</details>
 
 
 ## Promise
