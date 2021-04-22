@@ -33,6 +33,25 @@ crossJoin(['a', 'b'], ['0', '1'], ['@', '#'], ['+', '-'])
 
 </details>
 
+
+<details>
+<summary>countRepeat</summary>
+
+```js
+// 统计一个数字在数组里面出现次数
+function countRepeat(list, t) {
+  let count = 0
+  for (let i = 0; i < list.length; i++) {
+    if (t === list[i]) count++
+  }
+  return count
+}
+
+countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3)
+```
+
+</details>
+
 ## F
 
 <details>
