@@ -46,6 +46,23 @@ let ajax = (...args) => {
 
 </details>
 
+## fetch
+<details>
+<summary>cancel</summary>
+
+```js
+const controller = AbortController()
+fetch('http://test.com/lll', {
+  signal: controller.signal
+})
+
+controller.abort()
+```
+
+</details>
+
+
+
 ## LRU
 
 <details>
