@@ -1,5 +1,38 @@
 # Array
 
+## C
+
+<details>
+<summary>crossJoin</summary>
+
+```js
+function crossJoin(...list) {
+  if (list.length <= 1) return list
+  const res = []
+  const [first, second, ...rest] = list;
+  for (let i = 0; i < first.length; i++) {
+     for (let j = 0; j < second.length; j++) {
+       res.push(`${first[i]}${second[j]}`)
+    }
+  }
+  return crossJoin(res, ...rest)
+}
+
+function crossJoin(...list) {
+  if (list.length <= 1) return list
+  const [list0, list1, ...list2] = list
+  return crossJoin(
+    list0.map(i => list1.map(j => [`${i}${j}`])).flat(),
+    ...list2
+  )
+}
+
+crossJoin(['a', 'b'], ['0', '1'], ['@', '#'], ['+', '-'])
+
+```
+
+</details>
+
 ## F
 
 <details>
