@@ -147,8 +147,10 @@ class Scheduler {
   list = []
 
   async add(promiseFunc) {
-    let context = {
+    const context = {
+      promise: null,
       status: 'pedding',
+      resolve: () => {}
     }
 
     context.promise = new Promise(resolve => {
@@ -163,7 +165,10 @@ class Scheduler {
     if (this.list.length <= this.max) context.resolve()
 
     return context.promise
-      .then(() => this.next(context));
+      .then(res => {
+        this.next(context)
+        return res
+      });
   }
 
   next(pre) {
@@ -173,7 +178,8 @@ class Scheduler {
 
     // 找到没有处理的
     const target = this.list.find(t => t.status === 'pedding')
-    return target ? target.resolve() : Promise.resolve()
+    // 启动这一个
+    if (target) target.resolve() 
   }
 }
 
@@ -182,13 +188,13 @@ const timeout = (time) => {
   return new Promise(r => setTimeout(r, time))
 }
 const addTask = (time, order) => {
-  scheduler.add(() => timeout(time))
-    .then(() => console.log(order))
+  return scheduler.add(() => timeout(time))
+    .then(() => (console.log(order), time))
 }
 
-addTask(1000, 1)
-addTask(500, 2)
-addTask(300, 3)
-addTask(400, 4)
+addTask(1000, 1).then(console.log)
+addTask(500, 2).then(console.log)
+addTask(300, 3).then(console.log)
+addTask(400, 4).then(console.log)
 // 2 3 1 4
 ```js
