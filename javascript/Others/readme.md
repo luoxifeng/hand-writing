@@ -134,3 +134,60 @@ Promise.resolve(new Promise(res => res(1))).then(console.log)
 Promise.resolve(2).then(console.log)
 
 </details>
+
+## Scheduler
+<details>
+<summary>Scheduler</summary>
+
+```js
+class Scheduler {
+
+  max = 2
+
+  list = []
+
+  async add(promiseFunc) {
+    let obj = {
+      status: 'pedding',
+    }
+    obj.promise = new Promise(res => {
+      obj.resolve = () => {
+        res()
+        obj.status = 'resolve'
+      }
+    })
+      .then(() => {
+        return promiseFunc()
+      })
+
+    this.list.push(obj)
+   
+    if (this.list.length > this.max) {
+    } else {
+      obj.resolve()
+    }
+
+    return obj.promise.then(() => {
+      const index = this.list.indexOf(obj)
+      index > -1 && this.list.splice(index, 1)
+      const target = this.list.find(t => t.status === 'pedding')
+      return target ? target.resolve() : Promise.resolve()
+    });
+  }
+}
+
+const scheduler = new Scheduler()
+const timeout = (time) => {
+  return new Promise(r => setTimeout(r, time))
+}
+const addTask = (time, order) => {
+  scheduler.add(() => timeout(time))
+    .then(() => console.log(order))
+}
+
+addTask(1000, 1)
+addTask(500, 2)
+addTask(300, 3)
+addTask(400, 4)
+// 2 3 1 4
+```js
