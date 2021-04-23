@@ -147,32 +147,33 @@ class Scheduler {
   list = []
 
   async add(promiseFunc) {
-    let obj = {
+    let context = {
       status: 'pedding',
     }
-    obj.promise = new Promise(res => {
-      obj.resolve = () => {
-        res()
-        obj.status = 'resolve'
+
+    context.promise = new Promise(resolve => {
+      context.resolve = () => {
+        resolve()
+        context.status = 'fulfilled'
       }
     })
-      .then(() => {
-        return promiseFunc()
-      })
+      .then(promiseFunc)
 
-    this.list.push(obj)
-   
-    if (this.list.length > this.max) {
-    } else {
-      obj.resolve()
-    }
+    this.list.push(context)
+    if (this.list.length <= this.max) context.resolve()
 
-    return obj.promise.then(() => {
-      const index = this.list.indexOf(obj)
-      index > -1 && this.list.splice(index, 1)
-      const target = this.list.find(t => t.status === 'pedding')
-      return target ? target.resolve() : Promise.resolve()
-    });
+    return context.promise
+      .then(() => this.next(context));
+  }
+
+  next(pre) {
+    // 删除已经完成的
+    const index = this.list.indexOf(pre)
+    index > -1 && this.list.splice(index, 1)
+
+    // 找到没有处理的
+    const target = this.list.find(t => t.status === 'pedding')
+    return target ? target.resolve() : Promise.resolve()
   }
 }
 
