@@ -1,6 +1,7 @@
 # Others
 
 ## Ajax
+
 <details>
 <summary>ajax</summary>
 
@@ -47,21 +48,20 @@ let ajax = (...args) => {
 </details>
 
 ## fetch
+
 <details>
 <summary>cancel</summary>
 
 ```js
-const controller = AbortController()
-fetch('http://test.com/lll', {
-  signal: controller.signal
-})
+const controller = AbortController();
+fetch("http://test.com/lll", {
+  signal: controller.signal,
+});
 
-controller.abort()
+controller.abort();
 ```
 
 </details>
-
-
 
 ## LRU
 
@@ -71,35 +71,34 @@ controller.abort()
 ```js
 class LRU {
   constructor(max) {
-    this.max = max
-    this.cache = []
+    this.max = max;
+    this.cache = [];
   }
 
   append(target) {
-    const index = this.cache.indexOf(target)
+    const index = this.cache.indexOf(target);
     if (index > -1) {
-      this.cache.splice(index, 1)
+      this.cache.splice(index, 1);
     } else if (this.cache.length >= this.max) {
-      this.cache.pop()
+      this.cache.pop();
     }
-    this.cache.unshift(target)
+    this.cache.unshift(target);
   }
 }
-const lru = new LRU(3)
-lru.append(1)
-console.log(lru.cache)
-lru.append(2)
-console.log(lru.cache)
-lru.append(3)
-console.log(lru.cache)
-lru.append(2)
-console.log(lru.cache)
-lru.append(4)
-console.log(lru.cache)
+const lru = new LRU(3);
+lru.append(1);
+console.log(lru.cache);
+lru.append(2);
+console.log(lru.cache);
+lru.append(3);
+console.log(lru.cache);
+lru.append(2);
+console.log(lru.cache);
+lru.append(4);
+console.log(lru.cache);
 ```
 
 </details>
-
 
 ## Promise
 
@@ -111,7 +110,7 @@ Promise.myAll = (promises = []) => {
   return new Promise((resolve, reject) => {
     const length = promises.length;
     const result = new Array(length);
-    let count = 0
+    let count = 0;
     for (let i = 0; i <= length - 1; i++) {
       Promise.resolve(promises[i]).then((res) => {
         count++;
@@ -135,11 +134,55 @@ Promise.resolve(2).then(console.log)
 
 </details>
 
-## Scheduler
+<details>
+<summary>mergePromise</summary>
+
+```js
+const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const ajax1 = () => {
+  return timeout(2000).then(() => {
+    console.log("1");
+    return 1;
+  });
+};
+
+const ajax2 = () => {
+  return timeout(1000).then(() => {
+    console.log("2");
+    return 2;
+  });
+};
+
+const ajax3 = () => {
+  return timeout(2000).then(() => {
+    console.log("3");
+    return 3;
+  });
+};
+
+const mergePromise = async (ajaxArray) => {
+  const list = [];
+  for (let i = 0; i < ajaxArray.length; i++) {
+    list[i] = await ajaxArray[i]();
+  }
+  return list;
+};
+
+mergePromise([ajax1, ajax2, ajax3]
+  ).then((data) => {
+    console.log("done");
+    console.log(data);
+  });
+  // 1, 2, 3 done [1, 2, 3]
+```
+
+</details>
+
 <details>
 <summary>Scheduler</summary>
 
-```js
+````js
 class Scheduler {
 
   max = 2
@@ -179,7 +222,7 @@ class Scheduler {
     // 找到没有处理的
     const target = this.list.find(t => t.status === 'pedding')
     // 启动这一个
-    if (target) target.resolve() 
+    if (target) target.resolve()
   }
 }
 
@@ -198,3 +241,4 @@ addTask(300, 3).then(console.log)
 addTask(400, 4).then(console.log)
 // 2 3 1 4
 ```js
+````
