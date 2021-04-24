@@ -195,18 +195,10 @@ const mergePromise = (ajaxArray) => {
 
 // #3
 const mergePromise = (ajaxArray) => {
-  let temp = null
-  const list = [];
-  for (let i = 0; i< ajaxArray.length; i++) {
-    if (!temp) {
-      temp = ajaxArray[i]()
-    } else {
-      temp = temp.then(ajaxArray[i])
-    }
-    list.push(temp)
-  }
-  
-  return Promise.all(list);
+  const list = ajaxArray.reduce((pre, next) => {
+    return pre.concat(pre[pre.length - 1].then(next))
+  }, [Promise.resolve()])
+  return Promise.all(list.slice(1));
 };
 ```
 
