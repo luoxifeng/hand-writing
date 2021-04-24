@@ -161,6 +161,14 @@ const ajax3 = () => {
   });
 };
 
+mergePromise([ajax1, ajax2, ajax3])
+  .then((data) => {
+    console.log("done");
+    console.log(data);
+  });
+  // 1, 2, 3 done [1, 2, 3]
+
+// #1
 const mergePromise = async (ajaxArray) => {
   const list = [];
   for (let i = 0; i < ajaxArray.length; i++) {
@@ -169,12 +177,37 @@ const mergePromise = async (ajaxArray) => {
   return list;
 };
 
-mergePromise([ajax1, ajax2, ajax3]
-  ).then((data) => {
-    console.log("done");
-    console.log(data);
-  });
-  // 1, 2, 3 done [1, 2, 3]
+// #2
+const mergePromise = (ajaxArray) => {
+  let temp = null
+  const list = [];
+  for (let i = 0; i< ajaxArray.length; i++) {
+    if (!temp) {
+      temp = ajaxArray[i]()
+    } else {
+      temp = temp.then(ajaxArray[i])
+    }
+    list.push(temp)
+  }
+  
+  return Promise.all(list);
+};
+
+// #3
+const mergePromise = (ajaxArray) => {
+  let temp = null
+  const list = [];
+  for (let i = 0; i< ajaxArray.length; i++) {
+    if (!temp) {
+      temp = ajaxArray[i]()
+    } else {
+      temp = temp.then(ajaxArray[i])
+    }
+    list.push(temp)
+  }
+  
+  return Promise.all(list);
+};
 ```
 
 </details>
