@@ -262,8 +262,8 @@ class Scheduler {
   async add(promiseFunc) {
     const context = {
       promise: null,
-      status: 'pedding',
       resolve: () => {}
+      status: 'pedding',
     }
 
     context.promise = new Promise(resolve => {
