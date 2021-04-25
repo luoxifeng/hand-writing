@@ -205,6 +205,51 @@ const mergePromise = (ajaxArray) => {
 </details>
 
 <details>
+<summary>RunQueue</summary>
+
+```js
+class RunQueue {
+  max = 3
+
+  list = []
+
+  doing = false
+
+  async add(...list) {
+    this.list.push(...list)
+    !this.doing && this.run()
+  }
+
+  async run() {
+    this.doing = true
+    let doingList = []
+    while (this.list.length) {
+      doingList = this.list.splice(0, this.max)
+      await Promise.all(doingList.map(t => t()))
+    }
+    this.doing = false
+  }
+}
+
+const runQueue = new RunQueue()
+const delay = (time, text) => () => new Promise(res => setTimeout(res, time)).then(() => console.log(text))
+
+runQueue.add(
+  delay(1000, 'queue-1-1'),
+  delay(5000, 'queue-1-2'),
+  delay(500, 'queue-1-3'),
+  delay(5000, 'queue-2-1'),
+  delay(2000, 'queue-2-2'),
+  delay(1000, 'queue-2-3'),
+  delay(3000, 'queue-3-1'),
+)
+
+
+```
+
+</details>
+
+<details>
 <summary>Scheduler</summary>
 
 ````js
