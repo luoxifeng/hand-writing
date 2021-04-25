@@ -42,8 +42,7 @@ var getName=function(){console.log('4')};
 function getName(){console.log('5');};
 
 
-4
-// 打印
+
 Foo.getName();
 getName();
 Foo().getName();
@@ -53,6 +52,7 @@ new (Foo.getName)();
 
 实现 mergePromise 函数，把传进去的数组顺序先后执行，并且把返回的数据先后放到数组 data 中
 
+4.
 const timeout = ms =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
