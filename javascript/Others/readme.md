@@ -47,6 +47,34 @@ let ajax = (...args) => {
 
 </details>
 
+## List
+
+<details>
+<summary>sum</summary>
+
+```js
+function sum(...list) {
+  function temp(..._list) {
+    return sum(...list, ..._list);
+  }
+
+  temp.toString = function () {
+    return list.reduce((a, b) => a + b);
+  };
+
+  // or
+  temp[Symbol.toPrimitive] = function () {
+    return list.reduce((a, b) => a + b);
+  };
+
+
+  return temp;
+}
+console.log(sum(1, 2, 3)(4));
+```
+
+</details>
+
 ## fetch
 
 <details>
@@ -161,12 +189,11 @@ const ajax3 = () => {
   });
 };
 
-mergePromise([ajax1, ajax2, ajax3])
-  .then((data) => {
-    console.log("done");
-    console.log(data);
-  });
-  // 1, 2, 3 done [1, 2, 3]
+mergePromise([ajax1, ajax2, ajax3]).then((data) => {
+  console.log("done");
+  console.log(data);
+});
+// 1, 2, 3 done [1, 2, 3]
 
 // #1
 const mergePromise = async (ajaxArray) => {
@@ -179,25 +206,28 @@ const mergePromise = async (ajaxArray) => {
 
 // #2
 const mergePromise = (ajaxArray) => {
-  let temp = null
+  let temp = null;
   const list = [];
-  for (let i = 0; i< ajaxArray.length; i++) {
+  for (let i = 0; i < ajaxArray.length; i++) {
     if (!temp) {
-      temp = ajaxArray[i]()
+      temp = ajaxArray[i]();
     } else {
-      temp = temp.then(ajaxArray[i])
+      temp = temp.then(ajaxArray[i]);
     }
-    list.push(temp)
+    list.push(temp);
   }
-  
+
   return Promise.all(list);
 };
 
 // #3
 const mergePromise = (ajaxArray) => {
-  const list = ajaxArray.reduce((pre, next) => {
-    return pre.concat(pre[pre.length - 1].then(next))
-  }, [Promise.resolve()])
+  const list = ajaxArray.reduce(
+    (pre, next) => {
+      return pre.concat(pre[pre.length - 1].then(next));
+    },
+    [Promise.resolve()]
+  );
   return Promise.all(list.slice(1));
 };
 ```
@@ -209,42 +239,41 @@ const mergePromise = (ajaxArray) => {
 
 ```js
 class RunQueue {
-  max = 3
+  max = 3;
 
-  list = []
+  list = [];
 
-  doing = false
+  doing = false;
 
   async add(...list) {
-    this.list.push(...list)
-    !this.doing && this.run()
+    this.list.push(...list);
+    !this.doing && this.run();
   }
 
   async run() {
-    this.doing = true
-    let doingList = []
+    this.doing = true;
+    let doingList = [];
     while (this.list.length) {
-      doingList = this.list.splice(0, this.max)
-      await Promise.all(doingList.map(t => t()))
+      doingList = this.list.splice(0, this.max);
+      await Promise.all(doingList.map((t) => t()));
     }
-    this.doing = false
+    this.doing = false;
   }
 }
 
-const runQueue = new RunQueue()
-const delay = (time, text) => () => new Promise(res => setTimeout(res, time)).then(() => console.log(text))
+const runQueue = new RunQueue();
+const delay = (time, text) => () =>
+  new Promise((res) => setTimeout(res, time)).then(() => console.log(text));
 
 runQueue.add(
-  delay(1000, 'queue-1-1'),
-  delay(5000, 'queue-1-2'),
-  delay(500, 'queue-1-3'),
-  delay(5000, 'queue-2-1'),
-  delay(2000, 'queue-2-2'),
-  delay(1000, 'queue-2-3'),
-  delay(3000, 'queue-3-1'),
-)
-
-
+  delay(1000, "queue-1-1"),
+  delay(5000, "queue-1-2"),
+  delay(500, "queue-1-3"),
+  delay(5000, "queue-2-1"),
+  delay(2000, "queue-2-2"),
+  delay(1000, "queue-2-3"),
+  delay(3000, "queue-3-1")
+);
 ```
 
 </details>
@@ -281,7 +310,7 @@ class Scheduler {
     })
       .then(promiseFunc)
       .then(this.next)
-    
+
     if (this.taskList.length <= this.max) task.resolve() // 启动
 
     return task.promise;

@@ -115,14 +115,14 @@ function myTimer(fun, a, b) {
 
 clear = myTimer(console.log, 0, 1000)
 
+
+7.
+
 function sum(...list) {
     sum.list.push(...list)
     return sum
 }
-
-sum[Symbol.toPrimitive]= function () {
+sum.list = []
+sum.toString = function () {
     return this.list.reduce((a, b) => a + b)
 }
-sum.list = []
-
-console.log(sum(1,2,3)(4)) 

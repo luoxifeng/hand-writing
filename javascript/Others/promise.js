@@ -46,3 +46,43 @@ addTask(1000, 1).then(console.log)
 addTask(500, 2).then(console.log)
 addTask(300, 3).then(console.log)
 addTask(400, 4).then(console.log)
+
+
+
+function add(x) {
+  var sum = x;
+  function tmp(y) {
+    sum = sum + y;
+    return tmp;
+  };
+  tmp.toString = function () {
+    return sum;
+  };
+  return tmp;
+}
+
+function add(...list) {
+  add.list.push(...list)
+  return add
+  // var sum = x;
+  // function tmp(y) {
+  //   sum = sum + y;
+  //   return tmp;
+  // };
+  // tmp.toString = function () {
+  //   return sum;
+  // };
+  // return tmp;
+}
+
+
+
+
+add.toString = function() {
+  return '111111'
+}
+
+add.list = []
+
+
+console.log(add(1)(2)(3))
