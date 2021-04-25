@@ -1,34 +1,36 @@
 class Scheduler {
-    max = 2
 
-    list = []
+  max = 2
 
-    async add(promiseFun) {
-        const task = {
-            promise: null,
-            resolve: () => {},
-            status: 'pedding',
-        }
+  list = []
 
-        task.promise = new Promise(res => {
-            task.resolve = () => {
-                res()
-                task.status = 'fulfilled'
-            }
-        }).then(promiseFun)
+  next = result => {
+    this.list = this.list.filter(t => t.status === 'pedding')
+    this.list[0] && this.list[0].resolve()
+    return result;
+  }
 
-        this.list.push(task)
-        if (this.list.length <= this.max) task.resolve()
-
-        return task.promise.then(res => {
-            const i = this.list.indexOf(task)
-            i > -1 && this.list.splice(i, 1)
-            const undoneTask = this.list.find(t => t.status === 'pedding')
-            undoneTask && undoneTask.resolve()
-            return res;
-        })
-
+  async add(promiseFunc) {
+    const task = {
+      promise: null,
+      resolve: () => {},
+      status: 'pedding',
     }
+
+    task.promise = new Promise(resolve => {
+      task.resolve = () => {
+        resolve()
+        task.status = 'fulfilled'
+      }
+    })
+      .then(promiseFunc)
+
+    this.list.push(task)
+    if (this.list.length <= this.max) task.resolve() // 启动
+
+    return task.promise.then(this.next);
+  }
+  
 }
 
 const scheduler = new Scheduler()

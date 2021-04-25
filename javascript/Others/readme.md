@@ -259,42 +259,35 @@ class Scheduler {
 
   list = []
 
+  next = result => {
+    this.list = this.list.filter(t => t.status === 'pedding')
+    this.list[0] && this.list[0].resolve()
+    return result;
+  }
+
   async add(promiseFunc) {
-    const context = {
+    const task = {
       promise: null,
-      resolve: () => {}
+      resolve: () => {},
       status: 'pedding',
     }
+    this.list.push(task)
 
-    context.promise = new Promise(resolve => {
-      context.resolve = () => {
+    task.promise = new Promise(resolve => {
+      task.resolve = () => {
         resolve()
-        context.status = 'fulfilled'
+        task.status = 'fulfilled'
       }
     })
       .then(promiseFunc)
 
-    this.list.push(context)
-    if (this.list.length <= this.max) context.resolve()
+    
+    if (this.list.length <= this.max) task.resolve() // 启动
 
-    return context.promise
-      .then(res => {
-        this.next(context)
-        return res
-      });
-  }
-
-  next(pre) {
-    // 删除已经完成的
-    const index = this.list.indexOf(pre)
-    index > -1 && this.list.splice(index, 1)
-
-    // 找到没有处理的
-    const target = this.list.find(t => t.status === 'pedding')
-    // 启动这一个
-    if (target) target.resolve()
+    return task.promise.then(this.next);
   }
 }
+
 
 const scheduler = new Scheduler()
 const timeout = (time) => {
