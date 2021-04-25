@@ -99,7 +99,21 @@ mergePromise([ajax1, ajax2, ajax3]).then(data => {
 写一个定时器函数 myTimer(fn, a, b),每次间隔 a,a+b,a+2b,...,a+nb 的时间执行fn，该定时器返回一个函数为 myClear，可以停止上面的定时器 myTimer（请使用setTimeout来实现该题目，myTimer函数只调用一次）
 
 
+function myTimer(fun, a, b) {
+  let timer
+  function inner(i = 0) {
+    timer = setTimeout(() => {
+      fun(i)
+      inner(++i)
 
+    }, a + b * i)
+  }
+
+  inner()
+  return () => clearTimeout(timer)
+}
+
+clear = myTimer(console.log, 0, 1000)
 
 function sum(...list) {
     sum.list.push(...list)
