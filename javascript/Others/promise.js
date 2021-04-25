@@ -2,11 +2,11 @@ class Scheduler {
 
   max = 2
 
-  list = []
+  taskList = []
 
   next = result => {
-    this.list = this.list.filter(t => t.status === 'pedding')
-    this.list[0] && this.list[0].resolve()
+    this.taskList = this.taskList.filter(t => t.status === 'pedding')
+    this.taskList[0] && this.taskList[0].resolve()
     return result;
   }
 
@@ -16,6 +16,7 @@ class Scheduler {
       resolve: () => {},
       status: 'pedding',
     }
+    this.taskList.push(task)
 
     task.promise = new Promise(resolve => {
       task.resolve = () => {
@@ -24,13 +25,12 @@ class Scheduler {
       }
     })
       .then(promiseFunc)
+      .then(this.next)
+    
+    if (this.taskList.length <= this.max) task.resolve() // 启动
 
-    this.list.push(task)
-    if (this.list.length <= this.max) task.resolve() // 启动
-
-    return task.promise.then(this.next);
+    return task.promise;
   }
-  
 }
 
 const scheduler = new Scheduler()
