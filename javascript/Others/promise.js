@@ -1,88 +1,72 @@
-class Scheduler {
+function deferAll() {
+  const baseCtl = {
+    resolve: () => {},
+    reject: () => {}
+  }
+  const deferList = []
+  const promise = new Promise((resolve, reject) => {
+    baseCtl.resolve = resolve
+    baseCtl.reject = reject
+  })
+  const createControl = () => {
 
-  max = 2
-
-  taskList = []
-
-  next = result => {
-    this.taskList = this.taskList.filter(t => t.status === 'pedding')
-    this.taskList[0] && this.taskList[0].resolve()
-    return result;
   }
 
-  async add(promiseFunc) {
-    const task = {
-      promise: null,
-      resolve: () => {},
-      status: 'pedding',
-    }
-    this.taskList.push(task)
+  return {
+    createControl,
+    result: promise.then(() => Promise.all(deferList))
+  }
+}
 
-    task.promise = new Promise(resolve => {
-      task.resolve = () => {
-        resolve()
-        task.status = 'fulfilled'
-      }
+class Controller {
+  promise = Promise.resolve()
+
+  resolve = () => {}
+
+  reject = () => {}
+
+  constructor(resolve, reject) {
+    this.promise = new Promise((...args) => {
+      [this.resolve, this.reject] = [
+        resolve ? resolve(args[0]) : args[0],
+        reject ? reject(args[1]) : args[1],
+      ]
     })
-      .then(promiseFunc)
-      .then(this.next)
-    
-    if (this.taskList.length <= this.max) task.resolve() // 启动
-
-    return task.promise;
   }
+
 }
 
-const scheduler = new Scheduler()
-const timeout = (time) => {
-  return new Promise(r => setTimeout(r, time))
+class DeferAll extends Controller {
+
+  baseCtl = null
+  
+  controllers = []
+
+  constructor() {
+    super()
+  }
+
+  get result() {
+    return this.promise.then(() => Promise.all(this.controllers))
+  }
+
+
+  createController() {
+    const controller = new Controller(
+      cb => res => {
+
+        cb(res)
+      },
+      cb => res => {
+        cb(res)
+      }
+    )
+    this.controllers.push(controller)
+    return controller
+  }
+
+  reset() {
+    
+  }
+
 }
-const addTask = (time, order) => {
-  return scheduler.add(() => timeout(time))
-    .then(() => (console.log(order), time))
-}
-
-addTask(1000, 1).then(console.log)
-addTask(500, 2).then(console.log)
-addTask(300, 3).then(console.log)
-addTask(400, 4).then(console.log)
-
-
-
-function add(x) {
-  var sum = x;
-  function tmp(y) {
-    sum = sum + y;
-    return tmp;
-  };
-  tmp.toString = function () {
-    return sum;
-  };
-  return tmp;
-}
-
-function add(...list) {
-  add.list.push(...list)
-  return add
-  // var sum = x;
-  // function tmp(y) {
-  //   sum = sum + y;
-  //   return tmp;
-  // };
-  // tmp.toString = function () {
-  //   return sum;
-  // };
-  // return tmp;
-}
-
-
-
-
-add.toString = function() {
-  return '111111'
-}
-
-add.list = []
-
-
-console.log(add(1)(2)(3))
