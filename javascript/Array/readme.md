@@ -85,6 +85,13 @@ function flat(list, n = 1) {
   return list.reduce((acc, curr) => acc.concat(Array.isArray(curr) ? flat(curr, n--) : curr), [])
 }
 
+function flat(list) {
+  while(list.some(t => Array.isArray(t))) {
+    list = [].concat(...list)
+  }
+  return list
+}
+
 flat([[1], [2, [3]], [5]])
 ```
 
