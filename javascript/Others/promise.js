@@ -1,22 +1,3 @@
-function deferAll() {
-  const baseCtl = {
-    resolve: () => {},
-    reject: () => {}
-  }
-  const deferList = []
-  const promise = new Promise((resolve, reject) => {
-    baseCtl.resolve = resolve
-    baseCtl.reject = reject
-  })
-  const createControl = () => {
-
-  }
-
-  return {
-    createControl,
-    result: promise.then(() => Promise.all(deferList))
-  }
-}
 
 class Controller {
   promise = Promise.resolve()
@@ -82,24 +63,17 @@ class DeferAll {
     this._controllers.push(controller)
     return controller
   }
-
-  reset() {
-    this._doneCount = 0
-    this._baseController = new Controller()
-    this._controllers.forEach(controller => controller.reset())
-  }
 }
 
 const defer = new DeferAll()
 
 
 
-
 const ctl1 = defer.createController()
 const ctl2 = defer.createController()
 defer.then(console.log, console.error)
-ctl1.resolve(1)
-ctl1.resolve(2)
+ctl1.reject(1)
+ctl2.resolve(2)
 const ctl3 = defer.createController()
 
 ctl3.resolve(3)
