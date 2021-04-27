@@ -21,3 +21,26 @@ function moneySlice(money) {
 moneySlice('1123456789.111')
 moneySlice('1123456789')
 ```
+
+## R
+
+<details>
+<summary>render</summary>
+
+```js
+function render(template, data) {
+  const iterator = template.matchAll(/\{\{(\w+)\}\}/g)
+  for (let i of iterator) {
+    if (i) {
+      template = template.replace(i[0], data[i[1]])
+    }
+  }
+  return template
+}
+
+render('{{d}} {{k}}', {d: 12, k: 123})
+```
+
+</details>
+
+
