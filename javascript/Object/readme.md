@@ -57,3 +57,17 @@ function myNew(A, ...args) {
   return result instanceof Object ? res : empty;
 }
 ```
+</details>
+
+## T
+
+<details>
+<summary>typeOf</summary>
+
+```js
+function typeOf(target) {
+  return /^\[object\s(\w+)\]$/.exec(Object.prototype.toString.call(target))[1].toLowerCase()
+}
+```
+</details>
+
