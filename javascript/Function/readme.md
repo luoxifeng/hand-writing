@@ -175,6 +175,29 @@ debounce(() => console.log("test"), 3000);
 ## P
 
 <details>
+<summary>partial</summary>
+
+```js
+
+function partial(fn, ...args) {
+  const i = args.indexOf(partial.__)
+  return (...arg) => {
+    if (i > -1) {
+      args[i] = arg.splice(0, 1)[0]
+    }
+    return fn(...args, ...arg)
+  }
+}
+partial.__ = `__placeholder_${Date.now()}__`
+
+const test = (a, b, c) => a + (b * c)
+test(3, 2, 4)
+partial(test, partial.__, 2)(3, 4)
+```
+
+</details>
+
+<details>
 <summary>pipe</summary>
 
 ```js
