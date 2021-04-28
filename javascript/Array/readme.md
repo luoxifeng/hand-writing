@@ -1,5 +1,18 @@
 # Array
 
+## A 
+
+<details>
+<summary>all</summary>
+
+
+```js
+const all = (list, fun = Boolean) => list.every(fun)
+
+all([1, 2, 3, 4])
+```
+</details>
+
 ## C
 
 <details>
