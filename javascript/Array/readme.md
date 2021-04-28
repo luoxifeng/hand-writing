@@ -13,6 +13,17 @@ all([1, 2, 3, 4])
 ```
 </details>
 
+<details>
+<summary>any</summary>
+
+
+```js
+const any = (list, fun = Boolean) => list.some(fun)
+
+any([1, 0, 0, 0])
+```
+</details>
+
 ## C
 
 <details>
