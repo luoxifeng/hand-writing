@@ -24,8 +24,6 @@ allEqual([1, 1, 1, 1]);
 
 </details>
 
-allEqual
-
 <details>
 <summary>any</summary>
 
