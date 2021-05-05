@@ -6,9 +6,20 @@
 <summary>all</summary>
 
 ```js
-const all = (list, fun = Boolean) => list.every(fun);
+const all = list => list.every(Boolean);
 
 all([1, 2, 3, 4]);
+```
+
+</details>
+
+<details>
+<summary>allPass</summary>
+
+```js
+const all = (list, t) => list.every(fun => fun(t));
+
+allPass([t => t], 1);
 ```
 
 </details>
