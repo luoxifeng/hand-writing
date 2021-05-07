@@ -17,7 +17,7 @@ all([1, 2, 3, 4]);
 <summary>allPass</summary>
 
 ```js
-const all = (list, t) => list.every(fun => fun(t));
+const allPass = (list, t) => list.every(fun => fun(t));
 
 allPass([t => t], 1);
 ```
@@ -42,6 +42,17 @@ allEqual([1, 1, 1, 1]);
 const any = (list, fun = Boolean) => list.some(fun);
 
 any([1, 0, 0, 0]);
+```
+
+</details>
+
+<details>
+<summary>anyPass</summary>
+
+```js
+const anyPass = (list, t) => funList.some(fun => fun(t));
+
+anyPass([t => t > 1, t => t > 0], 2);
 ```
 
 </details>
