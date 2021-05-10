@@ -17,6 +17,20 @@ function create(prototype, descriptors = {}) {
 
 </details>
 
+## H
+
+<details>
+<summary>hasCircle</summary>
+
+```js
+function hasCircle(obj) {
+  
+}
+```
+
+</details>
+
+
 ## I
 
 <details>
