@@ -23,27 +23,18 @@ function create(prototype, descriptors = {}) {
 <summary>hasCircle</summary>
 
 ```js
-function hasCircle(obj) {
+function hasCircle(obj = {}) {
   const map = new Map()
-  let has = false
-
-  (function loop(o) {
-    const keys = Object.keys(o)
-    for (let i = 0;i < keys.length;i++) {
-      const t = o[keys[i]]
-      if (typeof t === 'object') {
-        if (map.has(t)) {
-          has = true
-          return
-        } else {
-          map.set(t)
-          loop(t)
-        }
+  return (function loop(o) {
+    return Object.keys(o).some(k => {
+      const t = o[k]
+      if (typeof t === 'object' && t !== null) {
+        if (map.has(t)) return true;
+        map.set(t)
+        if (loop(t)) return true;
       }
-    }
+    })
   })(obj)
-
-  return has
 }
 ```
 
