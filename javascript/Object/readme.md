@@ -27,7 +27,7 @@ function hasCircle(obj) {
   const map = new Map()
   let has = false
 
-  function loop(o) {
+  (function loop(o) {
     const keys = Object.keys(o)
     for (let i = 0;i < keys.length;i++) {
       const t = o[keys[i]]
@@ -41,9 +41,7 @@ function hasCircle(obj) {
         }
       }
     }
-  }
-
-  loop(obj)
+  })(obj)
 
   return has
 }
