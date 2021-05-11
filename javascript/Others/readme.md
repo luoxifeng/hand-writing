@@ -288,33 +288,35 @@ class Scheduler {
 
   taskList = []
 
+  getTask() {
+    let resolve
+    return {
+      promise: new Promise(res => resolve = res),
+      resolve: function () {
+        resolve()
+        this.status = 'done'
+      },
+      status: 'waiting',
+    }
+  }
+
   next = result => {
-    this.taskList = this.taskList.filter(t => t.status === 'waiting')
-    this.taskList[0] && this.taskList[0].resolve()
-    return result;
+    const undone = this.taskList.find(t => t.status === 'waiting') || this.getTask()
+    return undone.resolve(result)
   }
 
   async add(promiseFunc) {
-    const task = {
-      promise: null,
-      resolve: () => {},
-      status: 'waiting',
-    }
+    const task = this.getTask()
     this.taskList.push(task)
-
-    task.promise = new Promise(resolve => {
-      task.resolve = () => {
-        resolve()
-        task.status = 'doing'
-      }
-    })
-      .then(promiseFunc)
-      .then(this.next)
 
     if (this.taskList.length <= this.max) task.resolve() // 启动
 
-    return task.promise;
+    return task
+      .promise
+      .then(promiseFunc)
+      .then(this.next);
   }
+  
 }
 
 
