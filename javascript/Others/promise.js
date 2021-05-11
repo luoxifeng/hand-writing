@@ -1,3 +1,4 @@
+const { resolve } = require('core-js/fn/promise')
 
 class Controller {
   promise = Promise.resolve()
@@ -77,5 +78,54 @@ ctl2.resolve(2)
 const ctl3 = defer.createController()
 
 ctl3.resolve(3)
+
+
+class Scheduler {
+  max = 3
+
+  list = []
+
+  async add(taskFun) {
+    const task = {
+      promise: null,
+      resolve: () => {},
+      status: 'pedding',
+    }
+
+    task.promise = new Promise(resolve => {
+      task.resolve = () => {
+        task.status = 'fulfilled'
+        resolve()
+      }
+    }).then(taskFun).then(res => {
+      const undone = this.list.find(t => t.status === 'pedding') || Promise
+      
+      return undone.resolve(res)
+    })
+
+    this.list.push(task)
+
+    if (this.list.length <= this.max) {
+      task.resolve()
+    }
+    return task.promise
+  }
+}
+
+
+const scheduler = new Scheduler()
+const timeout = (time) => {
+  return new Promise(r => setTimeout(r, time))
+}
+const addTask = (time, order) => {
+  return scheduler.add(() => timeout(time))
+    .then(() => (console.log(order), time))
+}
+
+addTask(1000, 1).then(console.log)
+addTask(500, 2).then(console.log)
+addTask(300, 3).then(console.log)
+addTask(400, 4).then(console.log)
+// 2 3 1 4
 
 

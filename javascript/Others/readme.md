@@ -289,20 +289,19 @@ class Scheduler {
   taskList = []
 
   getTask() {
-    let resolve
-    return {
-      promise: new Promise(res => resolve = res),
-      resolve: function () {
-        resolve()
-        this.status = 'done'
-      },
+    const task = {
+      promise: null,
+      resolve: () => {},
       status: 'waiting',
     }
-  }
 
-  next = result => {
-    const undone = this.taskList.find(t => t.status === 'waiting') || this.getTask()
-    return undone.resolve(result)
+    task.promise = new Promise(resolve => {
+      task.resolve = () => {
+        resolve()
+        task.status = 'done'
+      }
+    })
+    return task;
   }
 
   async add(promiseFunc) {
@@ -316,7 +315,16 @@ class Scheduler {
       .then(promiseFunc)
       .then(this.next);
   }
-  
+
+  next = (result) => {
+    // 清除已经完成的任务
+    this.taskList = this.taskList.filter(t => t.status === 'waiting')
+
+    // 找到第一个等待的任务启动
+    this.taskList[0] && this.taskList[0].resolve()
+
+    return result
+  }
 }
 
 
