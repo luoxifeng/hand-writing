@@ -86,6 +86,23 @@ function myNew(A, ...args) {
 ## T
 
 <details>
+<summary>take</summary>
+
+```js
+const take = (list, count = 1) => list.slice(0, count)
+```
+</details>
+
+
+<details>
+<summary>takeRight</summary>
+
+```js
+const takeRight = (list, count = 1) => list.slice(list.length - count, list.length)
+```
+</details>
+
+<details>
 <summary>typeOf</summary>
 
 ```js
