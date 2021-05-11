@@ -112,3 +112,13 @@ function typeOf(target) {
 ```
 </details>
 
+
+## U
+
+<details>
+<summary>union</summary>
+
+```js
+const union = (a = [], b = []) => [...new Set([...a,  ...b])]
+```
+</details>
