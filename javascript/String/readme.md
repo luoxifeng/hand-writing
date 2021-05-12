@@ -65,3 +65,24 @@ render("{{d}} {{k}}", { d: 12, k: 123 });
 ```
 
 </details>
+
+
+<details>
+<summary>replaceAll</summary>
+
+```js
+function replaceAll(origin, from, to) {
+  if (from === to) return origin
+  if (from === '') return origin.replace(/(?=.|$)/g, to)
+  let last = NaN
+  while (last !== origin) {
+    last = origin
+    origin = origin.replace(from, to)
+  }
+  return last
+}
+
+replaceAll("a_a_a_a", 'a', 'b');
+```
+
+</details>
