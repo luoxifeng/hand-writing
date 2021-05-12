@@ -72,14 +72,18 @@ render("{{d}} {{k}}", { d: 12, k: 123 });
 
 ```js
 function replaceAll(origin, from, to) {
-  if (from === to) return origin
-  if (from === '') return origin.replace(/(?=.|$)/g, to)
-  let last = NaN
-  while (last !== origin) {
-    last = origin
-    origin = origin.replace(from, to)
+  let current = origin
+  if (from === to) return current
+  if (from === '') return current.replace(/(?=.|$)/g, to)
+  const length = from.length
+  let res = ''
+  let index = -1
+
+  while ((index = current.indexOf(from)) > -1) {
+    res += current.slice(0, index + length).replace(from, to)
+    current = current.slice(index + length)
   }
-  return last
+  return res + current
 }
 
 replaceAll("a_a_a_a", 'a', 'b');
