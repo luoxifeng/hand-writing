@@ -45,6 +45,25 @@ indexs('test####test$$$$test', 'test');
 
 </details>
 
+## P
+
+<details>
+<summary>padStart</summary>
+
+```js
+function padStart(str, length, padStr = ' ') {
+  return Array.from({ length: length - str.length }, () => padStr)
+    .concat(str
+    ).join('')
+}
+
+padStart("123", 5, '');
+padStart("123", 5, '-');
+padStart("123", 3, '-');
+```
+
+</details>
+
 ## R
 
 <details>
