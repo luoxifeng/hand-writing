@@ -22,6 +22,21 @@ moneySlice("1123456789.111");
 moneySlice("1123456789");
 ```
 
+## E
+
+<details>
+<summary>escapeHTML</summary>
+
+```js
+function escapeHTML(str) {
+ 
+}
+
+escapeHTML('<div>test</div>');
+```
+
+</details>
+
 ## I
 
 <details>
