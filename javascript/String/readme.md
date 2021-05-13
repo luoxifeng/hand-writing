@@ -34,7 +34,7 @@ function indexs(str, substr) {
   const len = substr.length
   let index = -len;
   while (true) {
-    index = str.indexOf(substr, index + 2);
+    index = str.indexOf(substr, index + len);
     if (index < 0) return list;
     list.push(index);
   }
@@ -90,3 +90,19 @@ replaceAll("a_a_a_a", 'a', 'b');
 ```
 
 </details>
+
+<details>
+<summary>reverse</summary>
+
+```js
+function reverse(str = '') {
+  return [...str].reverse().join('')
+}
+
+reverse('123456789')
+```
+
+</details>
+
+
+
