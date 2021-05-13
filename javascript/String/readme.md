@@ -52,14 +52,36 @@ indexs('test####test$$$$test', 'test');
 
 ```js
 function padStart(str, length, padStr = ' ') {
-  return Array.from({ length: length - str.length }, () => padStr)
-    .concat(str
-    ).join('')
+  return [
+    ...Array.from({ length: length - str.length }, () => padStr),
+    str
+  ].join('')
 }
 
-padStart("123", 5, '');
-padStart("123", 5, '-');
-padStart("123", 3, '-');
+padStart("123", 5);
+padStart("123", 5, '')
+padStart("123", 5, '-')
+padStart("123", 3, '-')
+```
+
+</details>
+
+
+<details>
+<summary>padEnd</summary>
+
+```js
+function padEnd(str, length, padStr = ' ') {
+  return [
+    str,
+    ...Array.from({ length: length - str.length }, () => padStr)
+  ].join('')
+}
+
+padEnd("123", 5);
+padEnd("123", 5, '')
+padEnd("123", 5, '-')
+padEnd("123", 2, '-')
 ```
 
 </details>
