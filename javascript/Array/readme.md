@@ -272,7 +272,7 @@ maxSecond([1, 5, 10, 2, 15]);
 </details>
 
 <details>
-<summary>maxSecond</summary>
+<summary>maxThird</summary>
 
 ```js
 function maxThird(list) {
