@@ -161,4 +161,41 @@ reverse('123456789')
 </details>
 
 
+## T
+<details>
+<summary>trim</summary>
+
+```js
+function trim(str) {
+  return str.replace(/^\s+|\s+$/, '')
+}
+
+trim('  test  ')
+```
+
+</details>
+
+<details>
+<summary>trimEnd</summary>
+
+```js
+const trimEnd = str => str.replace(/\s+$/, '')
+
+trimEnd('  test  ')
+```
+
+</details>
+
+<details>
+<summary>trimStart</summary>
+
+```js
+const trimStart = str => str.replace(/^\s+/, '')
+
+trimStart('  test  ')
+```
+
+</details>
+
+
 
