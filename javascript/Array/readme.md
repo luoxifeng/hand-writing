@@ -258,6 +258,10 @@ function max(list) {
   return res;
 }
 
+function max(list) {
+  return Math.max.apply(null, list)
+}
+
 max([1, 5, 10, 2]);
 ```
 
@@ -274,6 +278,10 @@ function min(list) {
     if (list[index] < res) res = list[index];
   }
   return res;
+}
+
+function min(list) {
+  return Math.min.apply(null, list)
 }
 
 min([1, 5, 10, 2]);
