@@ -368,3 +368,28 @@ function reduce(list, fun, initData, ctx) {
 }
 ```
 </details>
+
+<details>
+<summary>remove</summary>
+
+```js
+const remove = (list, item) => {
+  const index = list.indexOf(item)
+  return ~index ? !!list.splice(index, 1).length : false
+}
+
+remove([0, 1], 1);
+```
+
+</details>
+
+<details>
+<summary>removeAt</summary>
+
+```js
+const removeAt = (list, index) => !!list.splice(index, 1).length
+
+removeAt([0, 1], 1);
+```
+
+</details>
