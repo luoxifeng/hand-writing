@@ -250,17 +250,33 @@ function getIntersection(...list) {
 
 ```js
 function max(list) {
-  let max = -Infinity;
-  const length = list.length;
-  let index = 0;
-  while (index < length - 1) {
-    if (list[index] > max) max = list[index];
-    index++;
+  let res = list[0];
+  let index = list.length;;
+  while (--index >= 0) {
+    if (list[index] > res) res = list[index];
   }
-  return max;
+  return res;
 }
 
 max([1, 5, 10, 2]);
+```
+
+</details>
+
+<details>
+<summary>min</summary>
+
+```js
+function min(list) {
+  let res = list[0];
+  let index = list.length;;
+  while (--index >= 0) {
+    if (list[index] < res) res = list[index];
+  }
+  return res;
+}
+
+min([1, 5, 10, 2]);
 ```
 
 </details>
