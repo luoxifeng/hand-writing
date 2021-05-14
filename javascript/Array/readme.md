@@ -107,6 +107,26 @@ countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 
 </details>
 
+## E
+
+<details>
+<summary>empty</summary>
+
+```js
+const empty = () => []
+```
+
+</details>
+
+<details>
+<summary>emptySelf</summary>
+
+```js
+const emptySelf = list => !(list.length = 0)
+```
+
+</details>
+
 ## F
 
 <details>
