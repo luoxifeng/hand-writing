@@ -113,7 +113,7 @@ countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 <summary>empty</summary>
 
 ```js
-const empty = () => []
+const empty = () => ([])
 ```
 
 </details>
@@ -242,6 +242,33 @@ function getIntersection(...list) {
 ```
 
 </details>
+
+## H
+
+<details>
+<summary>head</summary>
+
+```js
+const head = list => list[0]
+
+head([1, 5, 10, 2]);
+```
+
+</details>
+
+## L
+
+<details>
+<summary>last</summary>
+
+```js
+const last = list => list[list.length - 1]
+
+last([1, 5, 10, 2]);
+```
+
+</details>
+
 
 ## M
 
