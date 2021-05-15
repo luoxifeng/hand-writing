@@ -402,6 +402,19 @@ function moveZeroesToEnd(list) {
 
 </details>
 
+## N
+
+<details>
+<summary>nth</summary>
+
+```js
+const nth = (list, index) => list[index]
+
+nth([10, 100, 123], 1);
+```
+
+</details>
+
 ## R
 
 <details>
