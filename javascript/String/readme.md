@@ -30,10 +30,10 @@ moneySlice("1123456789");
 ```js
 function escapeHTML(str) {
   return str
-    .replace(, '')
-    .replace(, '')
-    .replace(, '')
-    .replace(, '')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }
 
 escapeHTML('<div>test</div>');
@@ -197,6 +197,24 @@ trimEnd('  test  ')
 const trimStart = str => str.replace(/^\s+/, '')
 
 trimStart('  test  ')
+```
+
+</details>
+
+## U
+<details>
+<summary>unescapeHTML</summary>
+
+```js
+function unescapeHTML(str) {
+  return str
+    .replace('&#39;', '\'')
+    .replace('&quot;', '"')
+    .replace('&lt;', '<')
+    .replace('&gt;', '>')
+}
+
+unescapeHTML('  test  ')
 ```
 
 </details>
