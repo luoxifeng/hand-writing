@@ -29,7 +29,11 @@ moneySlice("1123456789");
 
 ```js
 function escapeHTML(str) {
- 
+  return str
+    .replace(, '')
+    .replace(, '')
+    .replace(, '')
+    .replace(, '')
 }
 
 escapeHTML('<div>test</div>');

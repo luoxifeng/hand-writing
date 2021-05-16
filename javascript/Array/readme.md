@@ -192,8 +192,7 @@ flatMap([1, 2, 3, 4], (x) => [[x * 2]]);
 <summary>from</summary>
 
 ```js
-if (!Array.from) {
-  Array.from = function from(arrayLike, mapping, ctx) {
+function from(arrayLike, mapping, ctx) {
     const arr = Array.prototype.slice.call(arrayLike);
     return mapping
       ? arr.map(function (t, i) {
