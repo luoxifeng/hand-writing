@@ -437,3 +437,28 @@ removeAt([0, 1], 1);
 ```
 
 </details>
+
+## T
+
+<details>
+<summary>take</summary>
+
+```js
+const take = (list, n = 1) => list.slice(0, n)
+
+take([0, 1, 2, 3], 2);
+```
+
+</details>
+
+<details>
+<summary>takeRight</summary>
+
+```js
+const takeRight = (list, n = 1) => list.slice(list.length - n, list.length)
+
+takeRight([0, 1, 2, 3], 2);
+```
+
+</details>
+
