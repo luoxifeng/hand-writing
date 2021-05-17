@@ -113,7 +113,7 @@ countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 <summary>empty</summary>
 
 ```js
-const empty = () => []
+const empty = () => ([])
 ```
 
 </details>
@@ -192,8 +192,7 @@ flatMap([1, 2, 3, 4], (x) => [[x * 2]]);
 <summary>from</summary>
 
 ```js
-if (!Array.from) {
-  Array.from = function from(arrayLike, mapping, ctx) {
+function from(arrayLike, mapping, ctx) {
     const arr = Array.prototype.slice.call(arrayLike);
     return mapping
       ? arr.map(function (t, i) {
@@ -242,6 +241,33 @@ function getIntersection(...list) {
 ```
 
 </details>
+
+## H
+
+<details>
+<summary>head</summary>
+
+```js
+const head = list => list[0]
+
+head([1, 5, 10, 2]);
+```
+
+</details>
+
+## L
+
+<details>
+<summary>last</summary>
+
+```js
+const last = list => list[list.length - 1]
+
+last([1, 5, 10, 2]);
+```
+
+</details>
+
 
 ## M
 
@@ -371,6 +397,19 @@ function moveZeroesToEnd(list) {
   }
   return res;
 }
+```
+
+</details>
+
+## N
+
+<details>
+<summary>nth</summary>
+
+```js
+const nth = (list, index) => list[index]
+
+nth([10, 100, 123], 1);
 ```
 
 </details>
