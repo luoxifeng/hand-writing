@@ -477,6 +477,30 @@ removeAt([0, 1], 1);
 
 </details>
 
+## S
+
+<details>
+<summary>shuffle</summary>
+
+```js
+function shuffle(list) {
+  const _list = [...list]
+  let i = _list.length, j
+  while (i > 0) {
+    j = parseInt(Math.random() * i)
+    i--
+    [_list[j], _list[i]] = [_list[i], _list[j]]
+  }
+  return _list
+}
+
+shuffle([0, 1, 2, 3, 4]);
+```
+
+</details>
+
+
+
 ## T
 
 <details>
