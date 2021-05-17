@@ -501,3 +501,14 @@ takeRight([0, 1, 2, 3], 2);
 
 </details>
 
+<details>
+<summary>takeRightWhile</summary>
+
+```js
+const takeRightWhile = (list, fun) => list.reduceRight((acc, curr) => fun(curr) ? acc : [curr, ...acc], [])
+
+takeRightWhile([0, 1, 2, 3], n => n > 1);
+```
+
+</details>
+
