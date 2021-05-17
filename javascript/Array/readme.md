@@ -505,10 +505,34 @@ takeRight([0, 1, 2, 3], 2);
 <summary>takeRightWhile</summary>
 
 ```js
-const takeRightWhile = (list, fun) => list.reduceRight((acc, curr) => fun(curr) ? acc : [curr, ...acc], [])
+const takeRightWhile = (list, fun) => {
+  let i = list.length
+  while (--i > -1) {
+    if (fun(list[i])) return list.slice(i + 1, list.length)
+  }
+  return list
+}
 
-takeRightWhile([0, 1, 2, 3], n => n > 1);
+takeRightWhile([0, 1, 2, 3], n => n < 2);
 ```
 
 </details>
+
+<details>
+<summary>takeWhile</summary>
+
+```js
+const takeWhile = (list, fun) => {
+  let i = -1
+  while (i++ < list.length) {
+    if (fun(list[i])) return list.slice(0, i)
+  }
+  return list
+}
+
+takeWhile([0, 1, 2, 3], n => n > 1);
+```
+
+</details>
+
 
