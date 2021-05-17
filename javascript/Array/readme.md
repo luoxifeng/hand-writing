@@ -417,6 +417,19 @@ nth([10, 100, 123], 1);
 ## R
 
 <details>
+<summary>random</summary>
+
+```js
+function random(list) {
+  return list[parseInt(Math.random() * list.length)]
+}
+
+random([0, 1, 2, 3, 4])
+```
+
+</details>
+
+<details>
 <summary>range</summary>
 
 ```js
