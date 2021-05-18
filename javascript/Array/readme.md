@@ -427,6 +427,21 @@ nth([10, 100, 123], 1);
 
 </details>
 
+## P
+
+<details>
+<summary>pluck</summary>
+
+```js
+function pluck(list, name) {
+  return list.map(t => t[name]).filter(t => t != null)
+}
+
+pluck([{ a: 10 }, { a: null }, { a: undefined }, { a: 123 }])
+```
+
+</details>
+
 ## R
 
 <details>
