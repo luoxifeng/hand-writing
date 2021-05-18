@@ -120,6 +120,22 @@ countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 
 </details>
 
+## D
+
+<details>
+<summary>diff</summary>
+
+```js
+function diff(list1, list2) {
+  return list1.filter(t => !list2.includes(t))
+}
+
+diff([1, 5, 10, 2], [11, 5, 10, 21]);
+```
+
+</details>
+
+
 ## E
 
 <details>
@@ -267,6 +283,23 @@ head([1, 5, 10, 2]);
 ```
 
 </details>
+
+## I 
+
+<details>
+<summary>intersect</summary>
+
+```js
+function intersect(list1, list2) {
+  return list1.filter(t => list2.includes(t))
+}
+
+intersect([1, 5, 10, 2], [11, 5, 10, 21]);
+```
+
+</details>
+
+
 
 ## L
 
