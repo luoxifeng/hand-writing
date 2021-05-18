@@ -600,4 +600,17 @@ takeWhile([0, 1, 2, 3], n => n > 1);
 
 </details>
 
+## union
 
+<details>
+<summary>union</summary>
+
+```js
+function union(list1, list2) {
+  return [...new Set([...list1, ...list2])]
+}
+
+union([0, 1, 2, 3], [2, 3, 4]);
+```
+
+</details>
