@@ -570,9 +570,19 @@ function shuffle(list) {
 
 shuffle([0, 1, 2, 3, 4]);
 ```
-
 </details>
 
+<details>
+<summary>sum</summary>
+
+```js
+function sum(list) {
+  return list.reduce((a, b) => a + b)
+}
+
+sum([0, 1, 2, 3, 4]);
+```
+</details>
 
 
 ## T
