@@ -60,6 +60,19 @@ anyPass([t => t > 1, t => t > 0], 2);
 ## C
 
 <details>
+<summary>compact</summary>
+
+```js
+function compact(list) {
+  return list.filter(t => t != null)
+}
+
+compact([null, undefined, 1, 0]);
+```
+
+</details>
+
+<details>
 <summary>crossJoin</summary>
 
 ```js
