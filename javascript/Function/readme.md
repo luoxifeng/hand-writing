@@ -178,17 +178,21 @@ debounce(() => console.log("test"), 3000);
 <summary>partial</summary>
 
 ```js
-
 function partial(fn, ...args) {
-  const i = args.indexOf(partial.__)
+  let indexs = [];
+  let i = 0
+  while (i < args.length) {
+    if (args[i] === partial.__) indexs.push(i)
+    i++
+  }
   return (...arg) => {
-    if (i > -1) {
-      args[i] = arg.splice(0, 1)[0]
-    }
+    indexs.forEach(ii => {
+      args[ii] = arg.splice(0, 1)[0]
+    })
     return fn(...args, ...arg)
   }
 }
-partial.__ = `__placeholder_${Date.now()}__`
+partial.__ = `__partial_placeholder__`
 
 const test = (a, b, c) => a + (b * c)
 test(3, 2, 4)
