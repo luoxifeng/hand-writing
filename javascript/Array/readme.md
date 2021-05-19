@@ -148,6 +148,19 @@ diff([1, 5, 10, 2], [11, 5, 10, 21]);
 
 </details>
 
+<details>
+<summary>drop</summary>
+
+```js
+function drop(list, count) {
+  return list.slice(count, list.length)
+}
+
+drop([1, 5, 10, 2], 1);
+```
+
+</details>
+
 
 ## E
 
