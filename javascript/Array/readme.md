@@ -573,6 +573,18 @@ shuffle([0, 1, 2, 3, 4]);
 </details>
 
 <details>
+<summary>size</summary>
+
+```js
+function size(list) {
+  return list.length
+}
+
+size([0, 1, 2, 3, 4]);
+```
+</details>
+
+<details>
 <summary>sum</summary>
 
 ```js
