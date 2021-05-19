@@ -57,6 +57,19 @@ anyPass([t => t > 1, t => t > 0], 2);
 
 </details>
 
+<details>
+<summary>append</summary>
+
+```js
+function append(list, target) {
+  return (list.push(target), list)
+}
+
+append([1, 2, 3], 2);
+```
+
+</details>
+
 ## C
 
 <details>
