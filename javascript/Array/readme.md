@@ -192,6 +192,36 @@ const emptySelf = list => !(list.length = 0)
 
 </details>
 
+<details>
+<summary>ectopic</summary>
+
+```js
+// 异位词 比如 abc, acb, cba 这种包含字符个数相同位置不同的词
+function ectopic(list) {
+  // 制定一个规则，得到一个标识，能代表一类异位词，也就是只要是异位词，得到的标识应该是相同的
+  // 比如 abc -> 'a_1-b_1-c_1' 统计每个字符出现的字数按照asc码排序得到一个字符串
+  const toKey = str => {
+    const map = str.split('').reduce((acc, k) => {
+      acc[k] = (acc[k] || 0) + 1
+      return acc 
+    }, {})
+
+    return Object.keys(map).sort().map(k => `${k}_${map[k]}`).join('-')
+  }
+  const groupMap = list.reduce((acc, str) => {
+    const key = toKey(str)
+    acc[key] = (acc[key] || []).concat(str)
+    return acc
+  }, {})
+
+  return Object.values(groupMap)
+}
+
+ectopic(['abc', 'sdc', 'bca', 'dcs', '121', '211'])
+```
+
+</details>
+
 ## F
 
 <details>
