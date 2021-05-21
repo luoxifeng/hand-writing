@@ -666,6 +666,19 @@ sum([0, 1, 2, 3, 4]);
 ## T
 
 <details>
+<summary>tail</summary>
+
+```js
+function tail(list) {
+  return list.length > 1 ? list.slice(1) : list
+}
+
+tail([0, 1, 2, 3]);
+```
+
+</details>
+
+<details>
 <summary>take</summary>
 
 ```js
