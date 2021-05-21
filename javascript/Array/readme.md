@@ -592,6 +592,31 @@ function reduce(list, fun, initData, ctx) {
 ```
 </details>
 
+
+<details>
+<summary>reject</summary>
+
+```js
+function reject(list, filter = t => t) {
+  return list.filter((...args) => !filter(...args))
+}
+
+reject([0, 1, 2], t => t < 1);
+```
+
+</details>
+
+<details>
+<summary>removeAt</summary>
+
+```js
+const removeAt = (list, index) => !!list.splice(index, 1).length
+
+removeAt([0, 1], 1);
+```
+
+</details>
+
 <details>
 <summary>remove</summary>
 
