@@ -21,6 +21,20 @@ function moneySlice(money) {
 moneySlice("1123456789.111");
 moneySlice("1123456789");
 ```
+## C
+
+<details>
+<summary>csvToArray</summary>
+
+```js
+function csvToArray(str, delemiter = ',') {
+  return str.split('\n').map(t => t.split(delemiter))
+}
+
+csvToArray('1,2\n1,2');
+```
+
+</details>
 
 ## E
 

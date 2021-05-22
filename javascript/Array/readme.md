@@ -70,6 +70,21 @@ append([1, 2, 3], 2);
 
 </details>
 
+<details>
+<summary>arrayToCSV</summary>
+
+```js
+function arrayToCSV(list, delemiter = ',') {
+  return list.map(t => t.join(delemiter)).join('\n')
+}
+
+arrayToCSV([[1, 2], [1, 2]]);
+```
+
+</details>
+
+
+
 ## C
 
 <details>
@@ -114,6 +129,8 @@ crossJoin(["a", "b"], ["0", "1"], ["@", "#"], ["+", "-"]);
 ```
 
 </details>
+
+
 
 <details>
 <summary>countRepeat</summary>
