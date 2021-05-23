@@ -101,6 +101,24 @@ bifurcate([1, 2], [true, false]);
 
 </details>
 
+<details>
+<summary>bifurcateBy</summary>
+
+```js
+function bifurcateBy(list1, fun) {
+  return list1.reduce((acc, val, i) => {
+    acc[+!fun(val, i)].push(val)
+    return acc
+  }, [[], []])
+}
+
+bifurcateBy([1, 2, 3, 4, 5], t => t > 2);
+```
+
+</details>
+
+
+
 
 
 
