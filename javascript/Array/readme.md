@@ -131,6 +131,21 @@ crossJoin(["a", "b"], ["0", "1"], ["@", "#"], ["+", "-"]);
 </details>
 
 
+<details>
+<summary>countBy</summary>
+
+```js
+function countBy(list, fun = t => t) {
+  return list.map(fun).reduce((acc, key) => {
+    acc[key] = (acc[key] || 0) + 1
+    return acc
+  }, {})
+}
+
+countBy([1, 2, 3, 8, 4, 3, 2, 3], t => t);
+```
+
+</details>
 
 <details>
 <summary>countRepeat</summary>
