@@ -83,6 +83,25 @@ arrayToCSV([[1, 2], [1, 2]]);
 
 </details>
 
+## B
+
+<details>
+<summary>bifurcate</summary>
+
+```js
+function bifurcate(list1, list2) {
+  return list1.reduce((acc, val, i) => {
+    acc[+!list2[i]].push(val)
+    return acc
+  }, [[], []])
+}
+
+bifurcate([1, 2], [true, false]);
+```
+
+</details>
+
+
 
 
 ## C
