@@ -17,6 +17,18 @@ function create(prototype, descriptors = {}) {
 
 </details>
 
+## D
+
+<details>
+<summary>deepClone</summary>
+
+```js
+function deepClone(target) {
+}
+```
+
+</details>
+
 ## H
 
 <details>
