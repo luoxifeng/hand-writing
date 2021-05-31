@@ -27,6 +27,29 @@ function cloneReg(reg) {
   return cloned;
 }
 ```
+</details>
+
+
+<details>
+<summary>cloneSymbol</summary>
+
+```js
+function cloneSymbol(target) {
+  return Object(Symbol.prototype.valueOf.call(target))
+}
+```
+
+</details>
+
+<details>
+<summary>cloneFun</summary>
+
+```js
+// 分箭头函数和普通函数
+function cloneFun(fun) {
+
+}
+```
 
 </details>
 
@@ -36,13 +59,93 @@ function cloneReg(reg) {
 <summary>deepClone</summary>
 
 ```js
-function deepClone(target) {
+function isObject(terget) {
+  const type = typeof terget
+  return target !== null && (type === 'object' || type === 'function')
 }
+
+const shallowSimpleTypes = [
+  'String',
+  'Number',
+  'Boolean',
+  'Error',
+  'Date',
+]
+const shallowSpecialTypes = [
+  'RegExp',
+  'Symbol',
+  'Funtion',
+]
+const shallowTypes = [...shallowSimpleTypes, ...shallowSpecialTypes]
+const deepTypes = [
+  'Map',
+  'Set',
+  'Array',
+  'Object',
+]
+const TypeMap = [...shallowTypes, ...deepTypes].reduce((a, b) => (a[b] = b, a), {})
+
+function getType(target) {
+  const type = Object.prototype.toString.call(target)
+  return /(?<=\[object\s)(\w+?)(?=\])/.exec(type)[0]
+}
+
+// 正则 函数 date Error 简单类型的包装类型
+function cloneShallowType(type, target) {
+  if (shallowSimpleTypes.includes(type)) return new targe.constructor(target)
+  if (type === TypeMap.RegExp) return cloneReg(target)
+  if (type === TypeMap.Function) return cloneFun(target)
+  if (type === TypeMap.Symbol) return cloneSymbol(target)
+}
+
+function deepClone(target, map = new WeakMap()) {
+  // 简单类型
+  if (!isObject(target)) return target
+
+  const type = getType(target)
+
+  // 克隆不需要递归的对象
+  if (shallowTypes.includes(type)) return cloneShallowType(type, target)
+
+  // 初始化需要深度克隆的对象
+  const cloned = new target.constructor()
+
+  // 处理环
+  if (map.get(target)) return target
+  map.set(target, cloned)
+
+  // 处理set
+  if (type === TypeMap.Set) { 
+    target.forEach(t => {
+      cloned.add(deepClone(t, map))
+    })
+    return cloned;
+  }
+
+  // 处理map
+  if (type === TypeMap.Map) {
+     target.forEach((value, key) => {
+      cloned.set(key, deepClone(value, map))
+    })
+  }
+  
+  // 处理数组
+  if (type === TypeMap.Array) {
+    cloned.push(...target.map(t => deepClone(t, map)))
+    return cloned
+  }
+
+  // 处理普通对象
+  Object.keys(target)
+    .forEach(key => {
+      cloned[key] = deepClone(target[key], map)
+    })
+  return cloned
+}
+
 ```
 
 </details>
-
-
 
 
 ## H
