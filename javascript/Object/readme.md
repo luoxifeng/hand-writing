@@ -17,6 +17,19 @@ function create(prototype, descriptors = {}) {
 
 </details>
 
+<details>
+<summary>cloneReg</summary>
+
+```js
+function cloneReg(reg) {
+  const cloned = new reg.constructor(reg.source, reg.flags)
+  cloned.lastIndex = reg.lastIndex
+  return cloned;
+}
+```
+
+</details>
+
 ## D
 
 <details>
@@ -28,6 +41,9 @@ function deepClone(target) {
 ```
 
 </details>
+
+
+
 
 ## H
 
