@@ -281,7 +281,7 @@ runQueue.add(
 <details>
 <summary>Scheduler</summary>
 
-````js
+```js
 class Scheduler {
 
   max = 2
@@ -342,5 +342,42 @@ addTask(500, 2).then(console.log)
 addTask(300, 3).then(console.log)
 addTask(400, 4).then(console.log)
 // 2 3 1 4
+```
+
 ```js
-````
+function requestInOrder(requests, initialParam) {
+  let list = []
+  let count = 0
+  return new Promise(res => {
+    requests.forEach((fun, i) => {
+      fun(initialParam).then(data => {
+        count++
+        list[i] = data
+        if (count === requests.length) res(list)
+      })
+    })
+  })
+}
+
+const request1 = (param) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(param), param)
+  })
+}
+
+const request2 = (param) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(param * 2), param * 2)
+  })
+}
+
+const request3 = (param) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(param * 3), param * 3)
+  })
+}
+
+requestInOrder([request2, request3, request1], 1000).then(res => console.log(res))
+```
+
+
