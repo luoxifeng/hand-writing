@@ -47,7 +47,23 @@ function cloneSymbol(target) {
 ```js
 // 分箭头函数和普通函数
 function cloneFun(fun) {
+  const funString = fun.toString()
+  // 箭头函数
+  if (!fun.prototype) return eval(funString)
 
+  // 普通函数
+  const params = (/(?<=\()((.|\n)*?)(?=\))/.exec(funString) || [''])[0].split(',')
+  const body = (/(?<=\{)((.|\n)*)(?=\})/.exec(funString) || [''])[0]
+  return new Function(...params, body)
+}
+
+function cloneFun(fun) {
+  try {
+    eval(`var __clone_fun__ = ${fun.toString()}`)
+    return __clone_fun__
+  } catch (e) {
+    return fun
+  }
 }
 ```
 
