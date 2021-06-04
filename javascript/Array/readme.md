@@ -286,6 +286,19 @@ function ectopic(list) {
   return Object.values(groupMap)
 }
 
+function ectopic(list) {
+  const map = new Map()
+
+  list.forEach(t => {
+    const id = [...t].sort().join('')
+    let _list = map.get(id) || []
+    if (_list.length === 0) map.set(id, _list)
+    _list.push(t)
+  })
+  
+  return map.values()
+}
+
 ectopic(['abc', 'sdc', 'bca', 'dcs', '121', '211'])
 ```
 
