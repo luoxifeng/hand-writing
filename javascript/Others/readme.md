@@ -14,7 +14,6 @@ let ajax = (...args) => {
     callback = () => {},
     flag = true
   ) => {
-    debugger;
     const xhr = getInstance();
     method = method.toUpperCase();
     if (method == "GET") {
@@ -379,5 +378,58 @@ const request3 = (param) => {
 
 requestInOrder([request2, request3, request1], 1000).then(res => console.log(res))
 ```
+</details>
+
+## Random
+<details>
+<summary>Random</summary>
+
+```js
+/*
+请实现抽奖函数rand，保证随机性
+输入为表示对象数组，对象有属性n表示人名，w表示权重
+随机返回一个中奖人名，中奖概率和w成正比
+*/
+let peoples = [
+  { n:'p1', weight: 100 },
+  { n:'p2', w: 200 },
+  { n:'p3', w: 1 }
+];
+let rand = function (p) {
+};
+```
+
+```js
+let peoples = [
+  { n:'p1', w: 100 },
+  { n:'p2', w: 200 },
+  { n:'p3', w: 1 }
+];
+function random(list) {
+  const newList = list.reduce((a, b) => {
+    let curr = null 
+    if (a.length === 0) {
+      curr = {
+        ...b,
+        start: 0,
+        end: b.w
+      }
+    } else {
+      const last = a[a.length - 1]
+      curr = {
+        ...b,
+        start: last.end,
+        end: last.end + b.w
+      }
+    }
+    return a.concat(curr)
+  }, [])
+  const num = newList[newList.length - 1].end * Math.random()
+  return newList.find(t => num >= t.start && num < t.end).n
+};
+
+random(peoples)
+```
 
 
+</details>
