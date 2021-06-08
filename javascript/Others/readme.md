@@ -156,9 +156,6 @@ Promise.myAll([
 ]).then(console.log, console.error);
 ```
 
-Promise.resolve(new Promise(res => res(1))).then(console.log)
-Promise.resolve(2).then(console.log)
-
 </details>
 
 <details>
