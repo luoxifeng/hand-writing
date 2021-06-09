@@ -128,4 +128,21 @@ addTask(300, 3).then(console.log)
 addTask(400, 4).then(console.log)
 // 2 3 1 4
 
+Promis.all = function(list) {
+  const length = list.length
+  let count = 0
+  const result = []
+  return new Promise((res, rej) => {
+    for (let i = 0;i < length;i++) {
+      Promise.resolve(list[i])
+        .then(res => {
+          result[i] = res
+          count++
+          if (count === length) res(result)
+        }, rej)
+    }
+  })
+
+}
+
 

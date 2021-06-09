@@ -138,7 +138,7 @@ Promise.myAll = (promises = []) => {
     const length = promises.length;
     const result = new Array(length);
     let count = 0;
-    for (let i = 0; i <= length - 1; i++) {
+    for (let i = 0; i < length; i++) {
       Promise.resolve(promises[i]).then((res) => {
         count++;
         result[i] = res;
@@ -157,6 +157,44 @@ Promise.myAll([
 ```
 
 </details>
+
+<details>
+<summary>allSettled</summary>
+
+```js
+Promise._allSettled = function(list) {
+  const length = list.length
+  const result = new Array(length)
+  let count = 0
+  return new Promise(resolve => {
+    for (let i = 0;i < length;i++) {
+      Promise.resolve(list[i])
+        .then(
+          value => {
+            result[i] = {
+              status: "fulfilled",
+              value
+            }
+          }, 
+          reason => {
+            result[i] = {
+              status: "rejected",
+              reason
+            }
+          }
+        )
+        .then(() => ++count === length && resolve(result))
+    }
+  })
+}
+
+Promise._allSettled([1, Promise.reject(2), 3, Promise.reject(4)])
+```
+
+</details>
+
+
+
 
 <details>
 <summary>mergePromise</summary>
