@@ -133,27 +133,32 @@ console.log(lru.cache);
 <summary>all</summary>
 
 ```js
-Promise.myAll = (promises = []) => {
+Promise._all = (promises = []) => {
   return new Promise((resolve, reject) => {
     const length = promises.length;
     const result = new Array(length);
     let count = 0;
-    for (let i = 0; i < length; i++) {
-      Promise.resolve(promises[i]).then((res) => {
-        count++;
-        result[i] = res;
-        if (count === length) resolve(result);
-      }, reject);
-    }
-  });
+
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise).then(
+        value => {
+          result[index] = value
+          ++count === length && resolve(result)
+        },
+        reject
+      )
+    })
+  })
 };
 
-Promise.myAll([
-  Promise.resolve(1),
-  2,
-  new Promise((res) => setTimeout(() => res(3), 2000)),
-  Promise.resolve(4),
-]).then(console.log, console.error);
+Promise.
+  _all([
+    Promise.resolve(1),
+    2,
+    new Promise((res) => setTimeout(() => res(3), 2000)),
+    Promise.resolve(4),
+  ])
+  .then(console.log, console.error);
 ```
 
 </details>
@@ -162,29 +167,29 @@ Promise.myAll([
 <summary>allSettled</summary>
 
 ```js
-Promise._allSettled = function(list) {
-  const length = list.length
+Promise._allSettled = function(promises) {
+  const length = promises.length
   const result = new Array(length)
   let count = 0
   return new Promise(resolve => {
-    for (let i = 0;i < length;i++) {
-      Promise.resolve(list[i])
-        .then(
+    promises.forEach((promise, index) => {
+       Promise.resolve(promise).then(
           value => {
-            result[i] = {
+            result[index] = {
               status: "fulfilled",
               value
             }
           }, 
           reason => {
-            result[i] = {
+            result[index] = {
               status: "rejected",
               reason
             }
           }
         )
         .then(() => ++count === length && resolve(result))
-    }
+
+    })
   })
 }
 
