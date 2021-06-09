@@ -142,7 +142,36 @@ Promis.all = function(list) {
         }, rej)
     }
   })
-
 }
 
+
+Promise._allSettled = function(list) {
+  const length = list.length
+  let allCount = 0
+  const result = []
+  return new Promise(res => {
+    for (let i = 0;i < length;i++) {
+      Promise.resolve(list[i])
+        .then(
+          value => {
+            result[i] = {
+              status: "fulfilled",
+              value
+            }
+          }, 
+          reason => {
+            result[i] = {
+              status: "rejected",
+              reason
+            }
+          }
+        ).then(() => {
+          allCount++
+          if (allCount === length) res(result)
+        })
+    }
+  })
+}
+
+Promise._allSettled([1, Promise.reject(2), 3, Promise.reject(4)])
 
