@@ -43,3 +43,52 @@ first.insert(new Link(4));
 
 first.reverse();
 ```
+
+
+## 双向链表
+
+- 定义
+
+```js
+class Link {
+  constructor(value) {
+    this.value = value;
+    this.prev = null
+    this.next = null;
+  }
+
+  // 插入
+  insert(link) {
+    if (!this.next) {
+      this.next = link;
+      link.prev = this
+    } else {
+      let curr = this.next;
+      while (curr.next != null) {
+        curr = curr.next;
+      }
+      curr.next = link;
+      link.prev = curr
+    }
+  }
+
+  // 翻转
+  reverse() {
+    function reverse(curr, next = null) {
+      const _next = curr.next;
+      curr.next = next;
+      curr.prev = _next
+      if (_next == null) return curr;
+      return reverse(_next, curr);
+    }
+    return reverse(this);
+  }
+}
+
+const first = new Link(1);
+first.insert(new Link(2));
+first.insert(new Link(3));
+first.insert(new Link(4));
+
+first.reverse();
+```
