@@ -162,12 +162,21 @@ class LinkedList {
   /**
    * 其他Api
    */
-
   // 长度
   size() {
     return this.length
   }
 
+  // 翻转
+  reverse() {
+    function reverse(curr, next = null) {
+      const _next = curr.next;
+      curr.next = next;
+      if (_next == null) return curr;
+      return reverse(_next, curr);
+    }
+    return reverse(this);
+  }
 
 }
 
