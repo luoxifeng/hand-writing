@@ -92,3 +92,6 @@ first.insert(new Link(4));
 
 first.reverse();
 ```
+## 字典
+
+## 二叉树
