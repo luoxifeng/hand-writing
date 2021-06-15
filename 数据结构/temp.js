@@ -25,6 +25,28 @@ class LinkedList {
     this.length++
   }
 
+  // 向指定位置插入一个元素
+  insert(position, element) {
+    if (position < 0 || position >= this.length) return false
+    const node = new Node(element)
+    let current = this.head
+    let index = 0
+    let prev = null
+    if (position === 0) {
+      node.next = current
+      this.head = node
+    } else {
+      while (position++ < this.length) {
+        prev = current
+        current = current.next
+      }
+      node.next = current
+      prev.next = node
+    }
+    this.length++
+    return true
+  }
+
   // 删除指定位置元素
   removeAt(position) {
     if (position < 0 || position >= this.length || this.head === null) return null
