@@ -167,6 +167,10 @@ class LinkedList {
     return this.length
   }
 
+  isEmpty() {
+    return !this.length
+  }
+
   // 翻转
   reverse() {
     function reverse(curr, next = null) {
