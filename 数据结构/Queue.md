@@ -1,3 +1,5 @@
+# Queue 队列
+```js
 class Queue {
 
   items = []
@@ -46,3 +48,5 @@ class Queue {
   }
 
 }
+
+```
