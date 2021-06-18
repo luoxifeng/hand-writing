@@ -75,3 +75,24 @@ class PriorityQueue extends Queue {
   }
 
 }
+var priorityQueue = new PriorityQueue(); 
+priorityQueue.enqueue("John", 2); 
+priorityQueue.enqueue("Jack", 1); 
+priorityQueue.enqueue("Camila", 1); 
+
+
+// 击鼓传花
+function hotPotato(nameList, num) {
+  const queue = new Queue()
+  queue.enqueue(...nameList)
+  let eliminated
+
+  while (queue.size() > 1) {
+    for (let i = 0; i < num; i++) {
+      queue.enqueue(queue.dequeue())
+    }
+    eliminated = queue.dequeue()
+    console.log(`当前被淘汰的是：${eliminated}`)
+  }
+  return queue.front()
+} 
