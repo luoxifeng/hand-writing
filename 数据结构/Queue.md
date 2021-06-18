@@ -50,3 +50,34 @@ class Queue {
 }
 
 ```
+
+## 优先队列
+```js
+class PriorityQueue extends Queue {
+
+  enqueue(element, priority) {
+    const item = { element, priority }
+    const length = this.items.length
+    let added = false
+    let i = 0
+
+    while (i < length) {
+      if (this.items[i].priority > item.priority) {
+        this.items.splice(i, 0, item)
+        added = true
+        break
+      }
+      i++
+    }
+
+    if (!added) this.items.push(item)
+  }
+
+}
+
+var priorityQueue = new PriorityQueue(); 
+priorityQueue.enqueue("John", 2); 
+priorityQueue.enqueue("Jack", 1); 
+priorityQueue.enqueue("Camila", 1); 
+
+```

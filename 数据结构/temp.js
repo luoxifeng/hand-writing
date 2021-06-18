@@ -45,4 +45,33 @@ class Queue {
     return this.items.length
   }
 
+  /**
+   * 打印
+   */
+  print() {
+    console.log(this.items.toString())
+  }
+
+}
+
+class PriorityQueue extends Queue {
+
+  enqueue(element, priority) {
+    const item = { element, priority }
+    let added = false
+    let i = 0
+    const length = this.items.length
+
+    while (i < length) {
+      if (this.items[i].priority > item.priority) {
+        this.items.splice(i, 0, item)
+        added = true
+        break
+      }
+      i++
+    }
+
+    if (!added) this.items.push(item)
+  }
+
 }
