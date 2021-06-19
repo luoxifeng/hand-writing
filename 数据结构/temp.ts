@@ -1,6 +1,3 @@
-# Stack 栈
-
-```ts
 interface IStack<T> {
   items: T[];
   push(...ags: T[]): void;
@@ -57,5 +54,3 @@ class Stack<T extends  any> implements IStack<T> {
     return this.items.length
   } 
 }
-
-```
