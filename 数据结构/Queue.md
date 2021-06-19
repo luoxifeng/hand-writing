@@ -1,64 +1,89 @@
 # Queue
 
-## Queue 普通队列
-```js
-class Queue {
+## 普通队列
+- 类型约束
+```ts
+interface IQueue<T> {
+  enqueue(...args: T[]): void;
+  dequeue(): T;
+  front(): T;
+  clear(): void;
+  isEmpty(): boolean;
+  size(): number;
+}
+```
+- 实现
+```ts
 
-  items = []
+class Queue<T extends any> implements IQueue<T> {
+
+  protected items = []
 
   /**
    * 相对列里面添加元素
    * @param  {...any} items 
    */
-  enqueue(...items) {
+  public enqueue(...items) {
     this.items.push(...items)
   }
 
   /**
    * 从队列移除第一项
    */
-  dequeue() {
+  public dequeue() {
     return this.items.shift()
+  }
+  
+  /**
+   * 获取队列的头
+   */
+  public front() {
+    return this.items[0]
   }
 
   /**
    * 清空队列
    */
-  clear() {
+  public clear() {
     this.items = []
-  }
-
-  /**
-   * 获取队列的头
-   */
-  front() {
-    return this.items[0]
   }
 
   /**
    * 判断是否为空队列
    */
-  isEmpty() {
+  public isEmpty() {
     return this.items.length === 0
   }
 
   /**
    * 获取队列的长度
    */
-  size() {
+  public size() {
     return this.items.length
   }
 
 }
-
 ```
 
 ## 优先队列
+
+- 类型约束
+```ts
+interface Item<T> {
+  element: T;
+  priority: number;
+}
+
+interface IPriorityQueue<T> extends Omit<IQueue<Item<T>>, 'enqueue'> {
+  enqueue(element: T, priority: number): void;
+}
+```
+
 - 实现
 ```js
-class PriorityQueue extends Queue {
+class PriorityQueue<T extends any> extends Queue<T> implements IPriorityQueue<T> {
 
-  enqueue(element, priority) {
+  public enqueue(element: T, priority: number) {
     const item = { element, priority }
     const length = this.items.length
     let added = false
