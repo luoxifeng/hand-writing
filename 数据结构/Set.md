@@ -51,6 +51,16 @@ class Set {
   }
 
   /**
+   * 并集
+   * @param {*} otherSet 
+   */
+  umion(otherSet) {
+    const set = new Set()
+    this.values().concat(otherSet.values()).forEach(value => set.add(value))
+    return set
+  }
+
+  /**
    * 交集
    * @param {*} otherSet 
    */
@@ -77,16 +87,6 @@ class Set {
   subset(otherSet) {
     return this.size() > otherSet.size() ? false :
       this.values().every(value => otherSet.has(value))
-  }
-
-  /**
-   * 合集
-   * @param {*} otherSet 
-   */
-  umion(otherSet) {
-    const set = new Set()
-    this.values().concat(otherSet.values()).forEach(value => set.add(value))
-    return set
   }
 }
 ```
