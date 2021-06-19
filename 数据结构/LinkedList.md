@@ -198,3 +198,42 @@ list.append(4)
 list.append(5)
 
 ```
+
+## 双向链表
+```ts
+class Link {
+  constructor(value) {
+    this.value = value;
+    this.prev = null
+    this.next = null;
+  }
+
+  // 插入
+  insert(link) {
+    if (!this.next) {
+      this.next = link;
+      link.prev = this
+    } else {
+      let curr = this.next;
+      while (curr.next != null) {
+        curr = curr.next;
+      }
+      curr.next = link;
+      link.prev = curr
+    }
+  }
+
+  // 翻转
+  reverse() {
+    function reverse(curr, next = null) {
+      const _next = curr.next;
+      curr.next = next;
+      curr.prev = _next
+      if (_next == null) return curr;
+      return reverse(_next, curr);
+    }
+    return reverse(this);
+  }
+}
+
+```
