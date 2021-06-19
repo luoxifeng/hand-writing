@@ -8,7 +8,7 @@ interface IStack<T> {
   size(): number;
 }
 
-class Stack<T extends  any> implements IStack<T> {
+class Stack<T extends any> implements IStack<T> {
 
   items: T[] = []
 

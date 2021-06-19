@@ -1,5 +1,6 @@
 # Stack 栈
 
+## 类型约束
 ```ts
 interface IStack<T> {
   items: T[];
@@ -10,7 +11,10 @@ interface IStack<T> {
   isEmpty(): boolean;
   size(): number;
 }
+```
 
+## 实现
+```ts
 class Stack<T extends  any> implements IStack<T> {
 
   items: T[] = []
