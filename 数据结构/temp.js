@@ -1,98 +1,50 @@
-class Queue {
+class Set {
 
-  items = []
+  items = {}
 
   /**
-   * 相对列里面添加元素
-   * @param  {...any} items 
+   * 是否包含
    */
-  enqueue(...items) {
-    this.items.push(...items)
+  has(value) {
+    return this.items.hasOwnProperty(value)
   }
 
   /**
-   * 从队列移除第一项
+   * 添加
+   * @param {*} value 
    */
-  dequeue() {
-    return this.items.shift()
+  add(value) {
+    if (this.has(value)) return false
+    return (this.items[value] = value, true)
   }
 
   /**
-   * 清空队列
+   * 删除
+   * @param {*} value 
+   */
+  remove(value) {
+    return this.has(value) && (delete this.items[value])
+  }
+
+  /**
+   * 清空
    */
   clear() {
-    this.items = []
+    this.items = {}
   }
 
   /**
-   * 获取队列的头
+   * 包含的元素
    */
-  front() {
-    return this.items[0]
+  values() {
+    return Object.keys(this.items)
   }
 
   /**
-   * 判断是否为空队列
-   */
-  isEmpty() {
-    return this.items.length === 0
-  }
-
-  /**
-   * 获取队列的长度
+   * 长度
    */
   size() {
-    return this.items.length
-  }
-
-  /**
-   * 打印
-   */
-  print() {
-    console.log(this.items.toString())
+    return this.values().length
   }
 
 }
-
-class PriorityQueue extends Queue {
-
-  enqueue(element, priority) {
-    const item = { element, priority }
-    let added = false
-    let i = 0
-    const length = this.items.length
-
-    while (i < length) {
-      if (this.items[i].priority > item.priority) {
-        this.items.splice(i, 0, item)
-        added = true
-        break
-      }
-      i++
-    }
-
-    if (!added) this.items.push(item)
-  }
-
-}
-var priorityQueue = new PriorityQueue(); 
-priorityQueue.enqueue("John", 2); 
-priorityQueue.enqueue("Jack", 1); 
-priorityQueue.enqueue("Camila", 1); 
-
-
-// 击鼓传花
-function hotPotato(nameList, num) {
-  const queue = new Queue()
-  queue.enqueue(...nameList)
-  let eliminated
-
-  while (queue.size() > 1) {
-    for (let i = 0; i < num; i++) {
-      queue.enqueue(queue.dequeue())
-    }
-    eliminated = queue.dequeue()
-    console.log(`当前被淘汰的是：${eliminated}`)
-  }
-  return queue.front()
-} 
