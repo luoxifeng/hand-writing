@@ -47,4 +47,43 @@ class Set {
     return this.values().length
   }
 
+  /**
+   * 交集
+   * @param {*} otherSet 
+   */
+  intersection(otherSet) {
+    const set = new Set()
+    this.values().forEach(value => otherSet.has(value) && set.add(value))
+    return set
+  }
+
+  /**
+   * 差集
+   * @param {*} otherSet 
+   */
+  difference(otherSet) {
+    const set = new Set()
+    this.values().forEach(value => !otherSet.has(value) && set.add(value))
+    return set
+  }
+
+  /**
+   * 
+   * @param {*} otherSet 
+   */
+  subset(otherSet) {
+    return this.size() > otherSet.size() ? false :
+      this.values().every(value => otherSet.has(value))
+  }
+
+  /**
+   * 合集
+   * @param {*} otherSet 
+   */
+  concat(otherSet) {
+    const set = new Set()
+    this.values().concat(otherSet.values()).forEach(value => set.add(value))
+    return set
+  }
+
 }
