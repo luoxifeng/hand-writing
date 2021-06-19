@@ -83,7 +83,7 @@ class Set {
    * 合集
    * @param {*} otherSet 
    */
-  concat(otherSet) {
+  umion(otherSet) {
     const set = new Set()
     this.values().concat(otherSet.values()).forEach(value => set.add(value))
     return set
