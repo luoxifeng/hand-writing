@@ -4,7 +4,7 @@
 - [Set 集合](./Set.md)
 - [LinkedList 单链表 双向链表](./LinkedList.md)
 - [Dictionary 字典](./Dictionary.md)
-- 散列表
+- [HashTable 散列表](./HashTable.md)
 - 树
 - 二叉树
 - 图
