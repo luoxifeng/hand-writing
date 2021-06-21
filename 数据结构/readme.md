@@ -6,4 +6,5 @@
 - [Dictionary 字典](./Dictionary.md)
 - [HashTable 散列表](./HashTable.md)
 - [树 Tree](./Tree.md)
+- 二叉树
 - 图
