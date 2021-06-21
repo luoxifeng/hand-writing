@@ -14,7 +14,7 @@ interface IDictionary {
    * 通过使用键值来从字典中移除键值对应的数据值。
    * @param key 
    */
-  remove(key): void;
+  remove(key): boolean;
 
   /**
    * 如果某个键值存在于这个字典中，则返回true，反之则返回false
@@ -67,7 +67,7 @@ class Dictionary implements IDictionary {
   }
 
   public remove(key: string) {
-    delete this.items[key]
+    return (delete this.items[key])
   }
 
   public has(key: string) {
