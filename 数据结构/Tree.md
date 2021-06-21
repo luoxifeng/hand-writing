@@ -1,7 +1,7 @@
 # Tree
 
 ## BinarySearchTree 二叉搜索树
-- 类型约束
+- 节点
 ```ts
 interface ITreeNode {
   key: any;
@@ -9,8 +9,23 @@ interface ITreeNode {
   right: ITreeNode
 }
 
+class TreeNode implements ITreeNode {
+
+  key = null
+  
+  left: ITreeNode = null
+
+  right: ITreeNode = null
+
+  constructor(key) {
+    this.key = key
+  }
+
+}
+
 ```
 
-- 实现
+- 树
 ```ts
+
 ```
