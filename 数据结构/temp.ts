@@ -28,18 +28,6 @@ interface IBinarySearchTree {
   insert(key): void;
 
   /**
-   * 从树中移除某个键
-   * @param key 
-   */
-  remove(key): void;
-
-  /**
-   * 搜索键
-   * @param key 
-   */
-  search(key): boolean;
-
-  /**
    * 通过中序遍历方式遍历所有节点
    */
   inOrderTraverse(cb: () => any): void;
@@ -64,6 +52,17 @@ interface IBinarySearchTree {
    */
   max(): any;
 
+    /**
+   * 从树中移除某个键
+   * @param key 
+   */
+  remove(key): void;
+
+  /**
+   * 搜索键
+   * @param key 
+   */
+  search(key): boolean;
 }
 
 class BinarySearchTree implements IBinarySearchTree {
@@ -110,6 +109,49 @@ class BinarySearchTree implements IBinarySearchTree {
     }
   }
 
+  static search(node: ITreeNode, key) {
+    if (node === null) return false
+    if (key < node.key) {
+      return this.search(node.left, key)
+    } else if (key > node.key) {
+      return this.search(node.right, key)
+    }
+    return true
+  }
+
+  static min(node: ITreeNode) {
+    let current = {
+      left: node,
+      key: null,
+    }
+    while (current && current.left) {
+      current = current.left
+    }
+    return current.key
+  }
+
+  static remove(node: ITreeNode, key) {
+    if (node === null) return null
+    if (key < node.key) {
+      node.left = this.remove(node.left, key)
+    } else if (key > node.key) {
+      node.right = this.remove(node.right, key)
+    } else {
+      if (node.left === null && node.right === null) {
+        node = null
+      } else if (node.left === null) {
+        node = node.right
+      } else if (node.right === null) {
+        node = node.left
+      } else {
+        const aux = this.min(node.right)
+        node.key = aux
+        node.right = this.remove(node.right, node.key)
+      }
+    }
+    return node;
+  }
+
   public insert(key) {
     const node = new TreeNode(key)
     if (this.root === null) {
@@ -132,14 +174,7 @@ class BinarySearchTree implements IBinarySearchTree {
   }
 
   public min() {
-    let current = {
-      left: this.root,
-      key: null,
-    }
-    while (current && current.left) {
-      current = current.left
-    }
-    return current.key
+    return BinarySearchTree.min(this.root)
   }
 
   public max() {
@@ -151,6 +186,14 @@ class BinarySearchTree implements IBinarySearchTree {
       current = current.right
     }
     return current.key
+  }
+
+  public search(key) {
+    return BinarySearchTree.search(this.root, key)
+  }
+
+  public remove(key) {
+    this.root = BinarySearchTree.remove(this.root, key)
   }
 }
 
@@ -180,4 +223,13 @@ console.log('\n')
 console.log(tree.min())
 console.log('\n')
 console.log(tree.max())
+console.log('\n')
+console.log(tree.search(105))
 
+console.log('\n')
+tree.remove(7)
+tree.inOrderTraverse()
+console.log('\n')
+tree.preOrderTraverse()
+console.log('\n')
+tree.postOrderTraverse()
