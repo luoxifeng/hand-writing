@@ -12,5 +12,9 @@
   "dependencies": {
     "core-js": "^3.8.1",
     "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "tslib": "^2.3.0"
   }
 }

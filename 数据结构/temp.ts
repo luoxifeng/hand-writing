@@ -42,17 +42,17 @@ interface IBinarySearchTree {
   /**
    * 通过中序遍历方式遍历所有节点
    */
-  inOrderTraverse(): any[];
+  inOrderTraverse(cb: () => any): void;
 
   /**
    * 通过先序遍历方式遍历所有节点
    */
-  preOrderTraverse(): any[];
+  preOrderTraverse(cb: () => any): void;
 
   /**
    * 通过后序遍历方式遍历所有节点
    */
-  postOrderTraverse(): any[];
+  postOrderTraverse(cb: () => any): void;
 
   /**
    * 返回树中最小的值/键
@@ -75,16 +75,39 @@ class BinarySearchTree implements IBinarySearchTree {
       if (root.left === null) {
         root.left = node
       } else {
-        BinarySearchTree.insertNode(root.left, node)
+        this.insertNode(root.left, node)
       }
     } else {
       if (root.right === null) {
         root.right = node
       } else {
-        BinarySearchTree.insertNode(root.right, node)
+        this.insertNode(root.right, node)
       }
     }
+  }
 
+  static inOrderTraverse(node: ITreeNode, callback: Function) {
+    if (node !== null) {
+      this.inOrderTraverse(node.left, callback)
+      callback(node.key)
+      this.inOrderTraverse(node.right, callback)
+    }
+  }
+
+  static preOrderTraverse(node: ITreeNode, callback: Function) {
+    if (node !== null) {
+      callback(node.key)
+      this.preOrderTraverse(node.left, callback)
+      this.preOrderTraverse(node.right, callback)
+    }
+  }
+
+  static postOrderTraverse(node: ITreeNode, callback: Function) {
+    if (node !== null) {
+      this.postOrderTraverse(node.left, callback)
+      this.postOrderTraverse(node.right, callback)
+      callback(node.key)
+    }
   }
 
   public insert(key) {
@@ -94,10 +117,41 @@ class BinarySearchTree implements IBinarySearchTree {
     } else {
       BinarySearchTree.insertNode(this.root, node)
     }
-    
-
   }
 
+  public inOrderTraverse(callback = console.log) {
+    BinarySearchTree.inOrderTraverse(this.root, callback)
+  }
 
+  public preOrderTraverse(callback = console.log) {
+    BinarySearchTree.preOrderTraverse(this.root, callback)
+  }
+
+  public postOrderTraverse(callback = console.log) {
+    BinarySearchTree.postOrderTraverse(this.root, callback)
+  }
 
 }
+
+var tree = new BinarySearchTree(); 
+tree.insert(11);
+tree.insert(7); 
+tree.insert(15); 
+tree.insert(5); 
+tree.insert(3);
+tree.insert(9); 
+tree.insert(8); 
+tree.insert(10); 
+tree.insert(13); 
+tree.insert(12); 
+tree.insert(14); 
+tree.insert(20); 
+tree.insert(18); 
+tree.insert(25);
+tree.insert(6);
+tree.inOrderTraverse()
+console.log('\n')
+tree.preOrderTraverse()
+console.log('\n')
+tree.postOrderTraverse()
+
