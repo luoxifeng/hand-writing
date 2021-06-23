@@ -131,6 +131,27 @@ class BinarySearchTree implements IBinarySearchTree {
     BinarySearchTree.postOrderTraverse(this.root, callback)
   }
 
+  public min() {
+    let current = {
+      left: this.root,
+      key: null,
+    }
+    while (current && current.left) {
+      current = current.left
+    }
+    return current.key
+  }
+
+  public max() {
+    let current = {
+      right: this.root,
+      key: null,
+    }
+    while (current && current.right) {
+      current = current.right
+    }
+    return current.key
+  }
 }
 
 var tree = new BinarySearchTree(); 
@@ -149,9 +170,14 @@ tree.insert(20);
 tree.insert(18); 
 tree.insert(25);
 tree.insert(6);
+console.log('\n')
 tree.inOrderTraverse()
 console.log('\n')
 tree.preOrderTraverse()
 console.log('\n')
 tree.postOrderTraverse()
+console.log('\n')
+console.log(tree.min())
+console.log('\n')
+console.log(tree.max())
 
