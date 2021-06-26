@@ -5,6 +5,5 @@
 - [LinkedList 单链表 双向链表](./LinkedList.md)
 - [Dictionary 字典](./Dictionary.md)
 - [HashTable 散列表](./HashTable.md)
-- [树 Tree](./Tree.md)
-- 二叉树
+- [Tree 树](./Tree.md)
 - 图
