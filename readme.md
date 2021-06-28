@@ -38,10 +38,10 @@
 - [Stack 栈](./数据结构/Stack.md)
 - [Queue 队列](./数据结构/Queue.md)
 - [Set 集合](./数据结构/Set.md)
-- [LinkedList 单链表 双向链表](./LinkedList.md)
-- [Dictionary 字典](./Dictionary.md)
-- [HashTable 散列表](./HashTable.md)
-- [Tree 树](./Tree.md)
+- [LinkedList 链表](./数据结构/LinkedList.md)
+- [Dictionary 字典](./数据结构/Dictionary.md)
+- [HashTable 散列表](./数据结构/HashTable.md)
+- [Tree 树](./数据结构/Tree.md)
 - 图
 
 
