@@ -19,7 +19,7 @@
 
 </details>
 <details for="Array">
-  <summary>🛒 Array</summary>
+  <summary><a href="./javascript/Function/readme.md">🛒 Array</a></summary>
 </details>
 <details for="JSON">
   <summary>🛒 JSON</summary>
