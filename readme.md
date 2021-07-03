@@ -2,34 +2,9 @@
 
 ## 📜 javascript
 
-- Object
-  - [new](./javascript/Object/new/readme.md)
-  - [instanceof](./javascript/Object/instanceof/readme.md)
-  - [create](./javascript/Object/create/readme.md)
-<details for="Object">
-<summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
-
-- [new](./javascript/Object/new/readme.md)
-- [instanceof](./javascript/Object/instanceof/readme.md)
-- [create](./javascript/Object/create/readme.md)
-</details>
-<details for="Function">
-<summary><a href="./javascript/Function/readme.md">💣 Function</a></summary>
-
-- [apply](./javascript/Function/apply.md)
-- [bind](./javascript/Function/bind.md)
-- [call](./javascript/Function/call.md)
-
-</details>
-<details for="Array">
-  <summary><a href="./javascript/Array/readme.md">🛒 Array</a></summary>
-</details>
-<details for="JSON">
-  <summary>🛒 JSON</summary>
-
-- parse
-- stringify
-</details>
+- [🦆 Object](./javascript/Object/readme.md)
+- [💣 Function](./javascript/Function/readme.md)
+- [🛒 Array](./javascript/Array/readme.md)
 
 ## 🖍 [Css](./css/readme.md)
 
