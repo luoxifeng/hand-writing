@@ -2,9 +2,9 @@
 
 ## 📜 javascript
 
-- [🦆 Object](./javascript/Object/readme.md)
-- [💣 Function](./javascript/Function/readme.md)
-- [🛒 Array](./javascript/Array/readme.md)
+- [Object](./javascript/Object/readme.md)
+- [Function](./javascript/Function/readme.md)
+- [Array](./javascript/Array/readme.md)
 
 ## 🖍 [Css](./css/readme.md)
 
