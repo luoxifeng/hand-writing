@@ -2,12 +2,15 @@
 
 ## 📜 javascript
 
+- Object
+  - [new](./javascript/Object/new/readme.md)
+  - [instanceof](./javascript/Object/instanceof/readme.md)
+  - [create](./javascript/Object/create/readme.md)
 <details for="Object">
 <summary><a href="./javascript/Object/readme.md">🦆 Object</a></summary>
 
 - [new](./javascript/Object/new/readme.md)
 - [instanceof](./javascript/Object/instanceof/readme.md)
-- [继承]()
 - [create](./javascript/Object/create/readme.md)
 </details>
 <details for="Function">
