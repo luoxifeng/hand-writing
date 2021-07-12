@@ -23,8 +23,7 @@ moneySlice("1123456789");
 ```
 ## C
 
-<details>
-<summary>csvToArray</summary>
+- csvToArray
 
 ```js
 function csvToArray(str, delemiter = ',') {
@@ -34,12 +33,8 @@ function csvToArray(str, delemiter = ',') {
 csvToArray('1,2\n1,2');
 ```
 
-</details>
-
 ## E
-
-<details>
-<summary>escapeHTML</summary>
+- escapeHTML
 
 ```js
 function escapeHTML(str) {
@@ -52,8 +47,6 @@ function escapeHTML(str) {
 
 escapeHTML('<div>test</div>');
 ```
-
-</details>
 
 ## I
 
