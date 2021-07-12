@@ -2,8 +2,7 @@
 
 ## A
 
-<details>
-<summary>all</summary>
+- all
 
 ```js
 const all = list => list.every(Boolean);
@@ -11,10 +10,7 @@ const all = list => list.every(Boolean);
 all([1, 2, 3, 4]);
 ```
 
-</details>
-
-<details>
-<summary>allPass</summary>
+- allPass
 
 ```js
 const allPass = (list, t) => list.every(fun => fun(t));
@@ -22,10 +18,7 @@ const allPass = (list, t) => list.every(fun => fun(t));
 allPass([t => t], 1);
 ```
 
-</details>
-
-<details>
-<summary>allEqual</summary>
+- allEqual
 
 ```js
 const allEqual = list => list.every((t, i, _list) => t === _list[0]);
@@ -33,10 +26,7 @@ const allEqual = list => list.every((t, i, _list) => t === _list[0]);
 allEqual([1, 1, 1, 1]);
 ```
 
-</details>
-
-<details>
-<summary>any</summary>
+- any
 
 ```js
 const any = (list, fun = Boolean) => list.some(fun);
@@ -44,10 +34,7 @@ const any = (list, fun = Boolean) => list.some(fun);
 any([1, 0, 0, 0]);
 ```
 
-</details>
-
-<details>
-<summary>anyPass</summary>
+- anyPass
 
 ```js
 const anyPass = (list, t) => funList.some(fun => fun(t));
@@ -55,10 +42,7 @@ const anyPass = (list, t) => funList.some(fun => fun(t));
 anyPass([t => t > 1, t => t > 0], 2);
 ```
 
-</details>
-
-<details>
-<summary>append</summary>
+- append
 
 ```js
 function append(list, target) {
@@ -68,10 +52,7 @@ function append(list, target) {
 append([1, 2, 3], 2);
 ```
 
-</details>
-
-<details>
-<summary>arrayToCSV</summary>
+- arrayToCSV
 
 ```js
 function arrayToCSV(list, delemiter = ',') {
@@ -80,8 +61,6 @@ function arrayToCSV(list, delemiter = ',') {
 
 arrayToCSV([[1, 2], [1, 2]]);
 ```
-
-</details>
 
 ## B
 
