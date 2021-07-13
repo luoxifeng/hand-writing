@@ -64,8 +64,7 @@ arrayToCSV([[1, 2], [1, 2]]);
 
 ## B
 
-<details>
-<summary>bifurcate</summary>
+- bifurcate
 
 ```js
 function bifurcate(list1, list2) {
@@ -78,10 +77,7 @@ function bifurcate(list1, list2) {
 bifurcate([1, 2], [true, false]);
 ```
 
-</details>
-
-<details>
-<summary>bifurcateBy</summary>
+- bifurcateBy
 
 ```js
 function bifurcateBy(list1, fun) {
@@ -94,17 +90,9 @@ function bifurcateBy(list1, fun) {
 bifurcateBy([1, 2, 3, 4, 5], t => t > 2);
 ```
 
-</details>
-
-
-
-
-
-
 ## C
 
-<details>
-<summary>compact</summary>
+- compact
 
 ```js
 function compact(list) {
@@ -114,10 +102,7 @@ function compact(list) {
 compact([null, undefined, 1, 0]);
 ```
 
-</details>
-
-<details>
-<summary>crossJoin</summary>
+- crossJoin
 
 ```js
 function crossJoin(...list) {
@@ -144,11 +129,7 @@ function crossJoin(...list) {
 crossJoin(["a", "b"], ["0", "1"], ["@", "#"], ["+", "-"]);
 ```
 
-</details>
-
-
-<details>
-<summary>countBy</summary>
+- countBy
 
 ```js
 function countBy(list, fun = t => t) {
@@ -160,11 +141,7 @@ function countBy(list, fun = t => t) {
 
 countBy([1, 2, 3, 8, 4, 3, 2, 3], t => t);
 ```
-
-</details>
-
-<details>
-<summary>countRepeat</summary>
+- countRepeat
 
 ```js
 // 统计一个数字在数组里面出现次数
@@ -178,8 +155,6 @@ function countRepeat(list, t) {
 
 countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 ```
-
-</details>
 
 ## D
 
