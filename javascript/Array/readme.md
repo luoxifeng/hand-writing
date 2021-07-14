@@ -158,8 +158,7 @@ countRepeat([1, 2, 3, 8, 4, 3, 2, 3], 3);
 
 ## D
 
-<details>
-<summary>diff</summary>
+- diff
 
 ```js
 function diff(list1, list2) {
@@ -169,10 +168,7 @@ function diff(list1, list2) {
 diff([1, 5, 10, 2], [11, 5, 10, 21]);
 ```
 
-</details>
-
-<details>
-<summary>drop</summary>
+- drop
 
 ```js
 function drop(list, count) {
@@ -181,10 +177,8 @@ function drop(list, count) {
 
 drop([1, 5, 10, 2], 1);
 ```
-</details>
 
-<details>
-<summary>dropLast</summary>
+- dropLast
 
 ```js
 function dropLast(list, count) {
@@ -193,30 +187,22 @@ function dropLast(list, count) {
 
 dropLast([1, 5, 10, 2], 1);
 ```
-</details>
 
 ## E
 
-<details>
-<summary>empty</summary>
+- empty
 
 ```js
 const empty = () => ([])
 ```
 
-</details>
-
-<details>
-<summary>emptySelf</summary>
+- emptySelf
 
 ```js
 const emptySelf = list => !(list.length = 0)
 ```
 
-</details>
-
-<details>
-<summary>ectopic</summary>
+- ectopic
 
 ```js
 // 异位词 比如 abc, acb, cba 这种包含字符个数相同位置不同的词
@@ -255,8 +241,6 @@ function ectopic(list) {
 
 ectopic(['abc', 'sdc', 'bca', 'dcs', '121', '211'])
 ```
-
-</details>
 
 ## F
 
