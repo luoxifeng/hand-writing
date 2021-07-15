@@ -244,8 +244,7 @@ ectopic(['abc', 'sdc', 'bca', 'dcs', '121', '211'])
 
 ## F
 
-<details>
-<summary>fill</summary>
+- fill
 
 ```js
 function fill(list, t) {
@@ -264,10 +263,7 @@ cosnt fill => (list, t) => Array.from(list, () => t)
 fill([1,2,2,2], 1)
 ```
 
-</details>
-
-<details>
-<summary>flat</summary>
+- flat
 
 ```js
 function flat(list, n = 1) {
@@ -288,10 +284,7 @@ function flat(list) {
 flat([[1], [2, [3]], [5]]);
 ```
 
-</details>
-
-<details>
-<summary>flatMap</summary>
+- flatMap
 
 ```js
 function flatMap(list, callback = (t) => t) {
@@ -301,10 +294,7 @@ function flatMap(list, callback = (t) => t) {
 flatMap([1, 2, 3, 4], (x) => [[x * 2]]);
 ```
 
-</details>
-
-<details>
-<summary>from</summary>
+- from
 
 ```js
 function from(arrayLike, mapping, ctx) {
@@ -317,8 +307,6 @@ function from(arrayLike, mapping, ctx) {
   };
 }
 ```
-
-</details>
 
 ## G
 
