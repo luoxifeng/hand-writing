@@ -310,8 +310,7 @@ function from(arrayLike, mapping, ctx) {
 
 ## G
 
-<details>
-<summary>getIntersection</summary>
+- getIntersection
 
 ```js
 /**
@@ -343,20 +342,15 @@ function getIntersection(...list) {
 }
 ```
 
-</details>
-
 ## H
 
-<details>
-<summary>head</summary>
+- head
 
 ```js
 const head = list => list[0]
 
 head([1, 5, 10, 2]);
 ```
-
-</details>
 
 ## I 
 
