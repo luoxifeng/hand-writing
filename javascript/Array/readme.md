@@ -354,8 +354,7 @@ head([1, 5, 10, 2]);
 
 ## I 
 
-<details>
-<summary>intersect</summary>
+- intersect
 
 ```js
 function intersect(list1, list2) {
@@ -365,14 +364,9 @@ function intersect(list1, list2) {
 intersect([1, 5, 10, 2], [11, 5, 10, 21]);
 ```
 
-</details>
-
-
-
 ## L
 
-<details>
-<summary>last</summary>
+- last
 
 ```js
 const last = list => list[list.length - 1]
@@ -380,13 +374,9 @@ const last = list => list[list.length - 1]
 last([1, 5, 10, 2]);
 ```
 
-</details>
-
-
 ## M
 
-<details>
-<summary>max</summary>
+- max
 
 ```js
 function max(list) {
@@ -405,10 +395,7 @@ function max(list) {
 max([1, 5, 10, 2]);
 ```
 
-</details>
-
-<details>
-<summary>min</summary>
+- min
 
 ```js
 function min(list) {
@@ -427,10 +414,7 @@ function min(list) {
 min([1, 5, 10, 2]);
 ```
 
-</details>
-
-<details>
-<summary>maxSecond</summary>
+- maxSecond
 
 ```js
 function maxSecond(list) {
@@ -453,10 +437,7 @@ function maxSecond(list) {
 maxSecond([1, 5, 10, 2, 15]);
 ```
 
-</details>
-
-<details>
-<summary>maxThird</summary>
+- maxThird
 
 ```js
 function maxThird(list) {
@@ -483,10 +464,7 @@ function maxThird(list) {
 maxThird([1, 5, 10, 2, 15]);
 ```
 
-</details>
-
-<details>
-<summary>moveZeroesToEnd</summary>
+- moveZeroesToEnd
 
 ```js
 // #1 改变自身
@@ -512,8 +490,6 @@ function moveZeroesToEnd(list) {
   return res;
 }
 ```
-
-</details>
 
 ## N
 
