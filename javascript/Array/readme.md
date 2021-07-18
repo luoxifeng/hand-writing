@@ -493,8 +493,7 @@ function moveZeroesToEnd(list) {
 
 ## N
 
-<details>
-<summary>nth</summary>
+- nth
 
 ```js
 const nth = (list, index) => list[index]
@@ -502,12 +501,9 @@ const nth = (list, index) => list[index]
 nth([10, 100, 123], 1);
 ```
 
-</details>
-
 ## P
 
-<details>
-<summary>pluck</summary>
+- pluck
 
 ```js
 function pluck(list, name) {
@@ -517,12 +513,9 @@ function pluck(list, name) {
 pluck([{ a: 10 }, { a: null }, { a: undefined }, { a: 123 }])
 ```
 
-</details>
-
 ## R
 
-<details>
-<summary>random</summary>
+- random
 
 ```js
 function random(list) {
@@ -532,10 +525,7 @@ function random(list) {
 random([0, 1, 2, 3, 4])
 ```
 
-</details>
-
-<details>
-<summary>range</summary>
+- range
 
 ```js
 function range(from, to) {
@@ -550,10 +540,7 @@ function range(from, to) {
 range(10, 100);
 ```
 
-</details>
-
-<details>
-<summary>reduce</summary>
+- reduce
 
 ```js
 function reduce(list, fun, initData, ctx) {
@@ -568,11 +555,7 @@ function reduce(list, fun, initData, ctx) {
   return result
 }
 ```
-</details>
-
-
-<details>
-<summary>reject</summary>
+- reject
 
 ```js
 function reject(list, filter = t => t) {
