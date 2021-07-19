@@ -565,10 +565,7 @@ function reject(list, filter = t => t) {
 reject([0, 1, 2], t => t < 1);
 ```
 
-</details>
-
-<details>
-<summary>removeAt</summary>
+- removeAt
 
 ```js
 const removeAt = (list, index) => !!list.splice(index, 1).length
@@ -576,10 +573,7 @@ const removeAt = (list, index) => !!list.splice(index, 1).length
 removeAt([0, 1], 1);
 ```
 
-</details>
-
-<details>
-<summary>remove</summary>
+- remove
 
 ```js
 const remove = (list, item) => {
@@ -590,10 +584,7 @@ const remove = (list, item) => {
 remove([0, 1], 1);
 ```
 
-</details>
-
-<details>
-<summary>removeAt</summary>
+- removeAt
 
 ```js
 const removeAt = (list, index) => !!list.splice(index, 1).length
@@ -601,12 +592,9 @@ const removeAt = (list, index) => !!list.splice(index, 1).length
 removeAt([0, 1], 1);
 ```
 
-</details>
-
 ## S
 
-<details>
-<summary>shuffle</summary>
+- shuffle
 
 ```js
 function shuffle(list) {
@@ -622,10 +610,9 @@ function shuffle(list) {
 
 shuffle([0, 1, 2, 3, 4]);
 ```
-</details>
 
-<details>
-<summary>size</summary>
+
+- size
 
 ```js
 function size(list) {
@@ -634,10 +621,8 @@ function size(list) {
 
 size([0, 1, 2, 3, 4]);
 ```
-</details>
 
-<details>
-<summary>sum</summary>
+- sum
 
 ```js
 function sum(list) {
@@ -646,8 +631,6 @@ function sum(list) {
 
 sum([0, 1, 2, 3, 4]);
 ```
-</details>
-
 
 ## T
 
