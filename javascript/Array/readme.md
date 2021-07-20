@@ -634,8 +634,7 @@ sum([0, 1, 2, 3, 4]);
 
 ## T
 
-<details>
-<summary>tail</summary>
+- tail
 
 ```js
 function tail(list) {
@@ -645,10 +644,7 @@ function tail(list) {
 tail([0, 1, 2, 3]);
 ```
 
-</details>
-
-<details>
-<summary>take</summary>
+- take
 
 ```js
 const take = (list, n = 1) => list.slice(0, n)
@@ -656,10 +652,7 @@ const take = (list, n = 1) => list.slice(0, n)
 take([0, 1, 2, 3], 2);
 ```
 
-</details>
-
-<details>
-<summary>takeRight</summary>
+- takeRight
 
 ```js
 const takeRight = (list, n = 1) => list.slice(list.length - n, list.length)
@@ -667,10 +660,7 @@ const takeRight = (list, n = 1) => list.slice(list.length - n, list.length)
 takeRight([0, 1, 2, 3], 2);
 ```
 
-</details>
-
-<details>
-<summary>takeRightWhile</summary>
+- takeRightWhile
 
 ```js
 const takeRightWhile = (list, fun) => {
@@ -684,10 +674,7 @@ const takeRightWhile = (list, fun) => {
 takeRightWhile([0, 1, 2, 3], n => n < 2);
 ```
 
-</details>
-
-<details>
-<summary>takeWhile</summary>
+- takeWhile
 
 ```js
 const takeWhile = (list, fun) => {
@@ -701,7 +688,6 @@ const takeWhile = (list, fun) => {
 takeWhile([0, 1, 2, 3], n => n > 1);
 ```
 
-</details>
 
 ## union
 
