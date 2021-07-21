@@ -691,8 +691,7 @@ takeWhile([0, 1, 2, 3], n => n > 1);
 
 ## union
 
-<details>
-<summary>union</summary>
+- union
 
 ```js
 function union(list1, list2) {
@@ -702,4 +701,3 @@ function union(list1, list2) {
 union([0, 1, 2, 3], [2, 3, 4]);
 ```
 
-</details>
