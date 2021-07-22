@@ -2,8 +2,7 @@
 
 ## A
 
-<details>
-<summary>apply</summary>
+- apply
 
 ```js
 // #1
@@ -29,12 +28,10 @@ Function.prototype.myApply = function () {
 };
 ```
 
-</details>
 
 ## B
 
-<details>
-<summary>bind</summary>
+- bind
 
 ```js
 Function.prototype.myBind = function (ctx, ...args) {
@@ -56,12 +53,9 @@ function test(...args) {
 test.myBind({ a: 123 }, 1, 2)(3, 4);
 ```
 
-</details>
-
 ## C
 
-<details>
-<summary>call</summary>
+- call
 
 ```js
 // #1
