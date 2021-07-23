@@ -81,10 +81,7 @@ Function.prototype.myCall = function () {
 };
 ```
 
-</details>
-
-<details>
-<summary>curry</summary>
+- curry
 
 ```js
 const curry = (fun, ...args) => {
@@ -98,10 +95,7 @@ curry(add)(1, 2, 3, 4);
 curry(add, 1, 2)(3, 4);
 ```
 
-</details>
-
-<details>
-<summary>compose</summary>
+- compose
 
 ```js
 const compose = (...funs) => funs.reduce((a, b) => (...args) => a(b(...args)));
@@ -112,10 +106,7 @@ compose(
 )(2);
 ```
 
-</details>
-
-<details>
-<summary>composeMiddleware</summary>
+- composeMiddleware
 
 ```js
 const composeMiddleware = (middlewares) => {
@@ -144,8 +135,6 @@ composeMiddleware([
   },
 ]);
 ```
-
-</details>
 
 ## D
 
