@@ -138,8 +138,7 @@ composeMiddleware([
 
 ## D
 
-<details>
-<summary>debounce</summary>
+- debounce
 
 ```js
 const debounce = (fun, delay) => {
@@ -153,12 +152,9 @@ const debounce = (fun, delay) => {
 debounce(() => console.log("test"), 3000);
 ```
 
-</details>
-
 ## P
 
-<details>
-<summary>partial</summary>
+- partial
 
 ```js
 function partial(fn, ...args) {
@@ -175,10 +171,7 @@ const test = (a, b, c, d) => a + b + c + d
 partial(test, partial.__, 2)(3, 4, 5)
 ```
 
-</details>
-
-<details>
-<summary>pipe</summary>
+- pipe
 
 ```js
 const pipe = (...funs) => funs.reduce((a, b) => (...args) => b(a(...args)));
@@ -188,8 +181,6 @@ pipe(
   (a) => a * 2
 )(2);
 ```
-
-</details>
 
 ## R
 
