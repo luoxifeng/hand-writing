@@ -2,8 +2,7 @@
 
 ## C
 
-<details>
-<summary>create</summary>
+- create
 
 ```js
 function create(prototype, descriptors = {}) {
@@ -14,8 +13,6 @@ function create(prototype, descriptors = {}) {
   return empty;
 }
 ```
-
-</details>
 
 <details>
 <summary>cloneReg</summary>

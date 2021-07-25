@@ -184,8 +184,7 @@ pipe(
 
 ## R
 
-<details>
-<summary>repeat</summary>
+- repeat
 
 ```js
 const repeat = (str, length) => Array.from({ length }, () => str).join("");
@@ -197,4 +196,3 @@ const repeat = (str, length, index = 0, res = "") => {
 repeat("d", 3);
 ```
 
-</details>
