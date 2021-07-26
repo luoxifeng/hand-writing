@@ -14,8 +14,7 @@ function create(prototype, descriptors = {}) {
 }
 ```
 
-<details>
-<summary>cloneReg</summary>
+- cloneReg
 
 ```js
 function cloneReg(reg) {
@@ -24,11 +23,9 @@ function cloneReg(reg) {
   return cloned;
 }
 ```
-</details>
 
 
-<details>
-<summary>cloneSymbol</summary>
+- cloneSymbol
 
 ```js
 function cloneSymbol(target) {
@@ -36,10 +33,7 @@ function cloneSymbol(target) {
 }
 ```
 
-</details>
-
-<details>
-<summary>cloneFun</summary>
+- cloneFun
 
 ```js
 // 分箭头函数和普通函数
@@ -63,8 +57,6 @@ function cloneFun(fun) {
   }
 }
 ```
-
-</details>
 
 ## D
 
