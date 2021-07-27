@@ -60,9 +60,7 @@ function cloneFun(fun) {
 
 ## D
 
-<details>
-<summary>deepClone</summary>
-
+- deepClone
 ```js
 function isObject(terget) {
   const type = typeof terget
@@ -150,13 +148,9 @@ function deepClone(target, map = new WeakMap()) {
 
 ```
 
-</details>
-
-
 ## H
 
-<details>
-<summary>hasCircle</summary>
+- hasCircle
 
 ```js
 function hasCircle(obj = {}) {
@@ -173,9 +167,6 @@ function hasCircle(obj = {}) {
   })(obj)
 }
 ```
-
-</details>
-
 
 ## I
 
