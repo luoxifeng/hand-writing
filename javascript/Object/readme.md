@@ -170,8 +170,7 @@ function hasCircle(obj = {}) {
 
 ## I
 
-<details>
-<summary>instanceof</summary>
+- instanceof
 
 ```js
 function myInstanceof(a, A) {
@@ -193,12 +192,11 @@ A.prototype = Object.create(B.prototype);
 console.log(myInstanceof(new A(), B)); //
 ```
 
-</details>
+
 
 ## N
 
-<details>
-<summary>new</summary>
+- new
 
 ```js
 function myNew(A, ...args) {
@@ -208,37 +206,31 @@ function myNew(A, ...args) {
   return result instanceof Object ? res : empty;
 }
 ```
-</details>
+
 
 ## T
 
-<details>
-<summary>take</summary>
+- take
 
 ```js
 const take = (list, count = 1) => list.slice(0, count)
 ```
-</details>
 
 
-<details>
-<summary>takeRight</summary>
+
+- takeRight
 
 ```js
 const takeRight = (list, count = 1) => list.slice(list.length - count, list.length)
 ```
-</details>
 
-<details>
-<summary>typeOf</summary>
+- typeOf
 
 ```js
 function typeOf(target) {
   return /^\[object\s(\w+)\]$/.exec(Object.prototype.toString.call(target))[1].toLowerCase()
 }
 ```
-</details>
-
 
 ## U
 
