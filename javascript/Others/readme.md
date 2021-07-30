@@ -92,8 +92,7 @@ controller.abort();
 
 ## LRU
 
-<details>
-<summary>LRU</summary>
+- LRU
 
 ```js
 class LRU {
@@ -124,8 +123,6 @@ console.log(lru.cache);
 lru.append(4);
 console.log(lru.cache);
 ```
-
-</details>
 
 ## Promise
 
