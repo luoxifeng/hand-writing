@@ -126,8 +126,7 @@ console.log(lru.cache);
 
 ## Promise
 
-<details>
-<summary>all</summary>
+- all
 
 ```js
 Promise._all = (promises = []) => {
@@ -157,8 +156,6 @@ Promise.
   ])
   .then(console.log, console.error);
 ```
-
-</details>
 
 <details>
 <summary>allSettled</summary>
