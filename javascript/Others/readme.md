@@ -157,8 +157,7 @@ Promise.
   .then(console.log, console.error);
 ```
 
-<details>
-<summary>allSettled</summary>
+- allSettled
 
 ```js
 Promise._allSettled = function(promises) {
@@ -189,11 +188,6 @@ Promise._allSettled = function(promises) {
 
 Promise._allSettled([1, Promise.reject(2), 3, Promise.reject(4)])
 ```
-
-</details>
-
-
-
 
 <details>
 <summary>mergePromise</summary>
