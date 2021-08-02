@@ -261,8 +261,7 @@ const mergePromise = (ajaxArray) => {
 
 </details>
 
-<details>
-<summary>RunQueue</summary>
+- RunQueue
 
 ```js
 class RunQueue {
@@ -302,8 +301,6 @@ runQueue.add(
   delay(3000, "queue-3-1")
 );
 ```
-
-</details>
 
 <details>
 <summary>Scheduler</summary>
