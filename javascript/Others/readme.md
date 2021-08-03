@@ -302,9 +302,7 @@ runQueue.add(
 );
 ```
 
-<details>
-<summary>Scheduler</summary>
-
+- Scheduler
 ```js
 class Scheduler {
 
@@ -403,7 +401,6 @@ const request3 = (param) => {
 
 requestInOrder([request2, request3, request1], 1000).then(res => console.log(res))
 ```
-</details>
 
 ## Random
 <details>
