@@ -403,8 +403,7 @@ requestInOrder([request2, request3, request1], 1000).then(res => console.log(res
 ```
 
 ## Random
-<details>
-<summary>Random</summary>
+- Random
 
 ```js
 /*
@@ -453,5 +452,3 @@ function random(list) {
 random(peoples)
 ```
 
-
-</details>
