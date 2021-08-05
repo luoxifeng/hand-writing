@@ -50,8 +50,7 @@ escapeHTML('<div>test</div>');
 
 ## I
 
-<details>
-<summary>indexs</summary>
+- indexs
 
 ```js
 function indexs(str, substr) {
@@ -68,8 +67,6 @@ function indexs(str, substr) {
 
 indexs('test####test$$$$test', 'test');
 ```
-
-</details>
 
 ## P
 
