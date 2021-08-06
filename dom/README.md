@@ -1,8 +1,6 @@
 # DOM
 
-<details>
-<summary>analysisDom</summary>
-
+- analysisDom
 ```js
 // 分析给定dom元素的包含的元素总个数，最深层级，最大子元素个数
 
@@ -60,4 +58,3 @@ analysisDom('.test_el')
 
 ```
 
-</details>
