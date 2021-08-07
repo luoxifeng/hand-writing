@@ -2,9 +2,6 @@
 
 ## Ajax
 
-<details>
-<summary>ajax</summary>
-
 ```js
 let ajax = (...args) => {
   const wrapper = (getInstance) => (
@@ -43,8 +40,6 @@ let ajax = (...args) => {
   return ajax(...args);
 };
 ```
-
-</details>
 
 ## List
 
