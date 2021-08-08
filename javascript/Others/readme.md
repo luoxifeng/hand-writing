@@ -71,8 +71,7 @@ console.log(sum(1, 2, 3)(4));
 
 ## fetch
 
-<details>
-<summary>cancel</summary>
+- cancel
 
 ```js
 const controller = AbortController();
@@ -83,7 +82,7 @@ fetch("http://test.com/lll", {
 controller.abort();
 ```
 
-</details>
+
 
 ## LRU
 
