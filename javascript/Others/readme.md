@@ -343,6 +343,41 @@ class Scheduler {
   }
 }
 
+class Scheduler {
+
+  max = 2
+
+  taskList = []
+
+  getTask() {
+    const task = {
+      promise: null,
+      resolve: null,
+    }
+
+    task.promise = new Promise(resolve => {
+      task.resolve = resolve
+    })
+    return task;
+  }
+
+  async add(promiseFunc) {
+    const task = this.getTask()
+    this.taskList.push(task)
+
+    if (this.taskList.length <= this.max) task.resolve() // 启动
+
+    return task
+      .promise
+      .then(promiseFunc)
+      .then(() => {
+         // 清除已经完成的任务 找到第一个等待的任务启动
+        this.taskList.filter(t => t !== task)[0]?.resolve()
+      });
+  }
+}
+
+
 
 const scheduler = new Scheduler()
 const timeout = (time) => {
