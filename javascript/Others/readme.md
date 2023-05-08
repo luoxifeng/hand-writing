@@ -371,8 +371,10 @@ class Scheduler {
       .promise
       .then(promiseFunc)
       .then(() => {
-         // 清除已经完成的任务 找到第一个等待的任务启动
-        this.taskList.filter(t => t !== task)[0]?.resolve()
+        // 清除已经完成的任务 
+        this.taskList = this.taskList.filter(t => t !== task)
+        // 找到第一个等待的任务启动
+        this.taskList[0]?.resolve()
       });
   }
 }
