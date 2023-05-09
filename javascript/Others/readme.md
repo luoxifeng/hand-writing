@@ -342,6 +342,34 @@ class Scheduler {
     return result
   }
 }
+  
+  class Scheduler {
+
+  max = 2
+
+  queue = []
+
+  running = 0
+
+  add(promiseFunc) {
+    return new Promise((resolve) => {
+      this.queue.push(() => promiseFunc().then(resolve));
+      this.run();
+    });
+  }
+
+  run() {
+    if (this.running < this.max && this.queue.length > 0) {
+      this.running++;
+      const promiseFunc = this.queue.shift();
+      promiseFunc()
+      .then(() => {
+        this.running--;
+        this.run();
+      });
+    }
+  }
+}
 
 const scheduler = new Scheduler()
 const timeout = (time) => {
