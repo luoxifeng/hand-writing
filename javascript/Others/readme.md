@@ -370,6 +370,34 @@ class Scheduler {
     }
   }
 }
+  
+  class Scheduler {
+
+  max = 2
+
+  queue = []
+
+  add(promiseFunc) {
+    const task = {
+      resolve: null,
+      status: 'waiting'
+    }
+    this.queue.push(task)
+
+    return new Promise((resolve) => {
+      task.resolve = () => {
+        task.status = 'doing'
+        resolve()
+      }
+      if (this.queue.length <= this.max) {
+        task.resolve()
+      }
+    }).then(promiseFunc).then(() => {
+      this.queue = this.queue.filter(t => t.status === 'waiting');
+      this.queue[0]?.resolve()
+    });
+  }
+}
 
 const scheduler = new Scheduler()
 const timeout = (time) => {
